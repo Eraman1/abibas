@@ -13,9 +13,14 @@ function Contact() {
             <div className="contact-div__text">
               <h2>Need additional information?</h2>
               <p>
-                A multifaceted professional skilled in multiple fields of
-                research, development as well as a learning specialist. Over 15
-                years of experience.
+                <b>Redefining Mobility</b>: At Abibas Motors, we are committed
+                to redefining how you move with smarter, cleaner, and faster
+                electric solutions. <br /> <b>Customer-Centric Approach</b>: Our
+                team is here to assist you with any queries or support you
+                need—your satisfaction is our priority. <br />{" "}
+                <b>Reach Out Anytime</b>: Contact us to explore our innovative
+                EV scooters or for assistance in choosing the perfect ride for
+                your journey.
               </p>
               <a href="/">
                 <i className="fa-solid fa-phone"></i>&nbsp; +91-8123254305

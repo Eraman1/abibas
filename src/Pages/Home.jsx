@@ -21,8 +21,8 @@ function Home() {
       <BookCar />
       <PlanTrip />
       <PickCar />
-      <Banner />
       <ChooseUs />
+      <Banner />
       {/* <Testimonials /> */}
       <Faq />
       <Download />

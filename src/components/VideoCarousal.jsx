@@ -101,7 +101,6 @@ function VideoCarousel() {
 }
 
 export default VideoCarousel;
-
 // const bannerImage =
 //   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/abibbasBanner-dPiTt6UDS7BEiWawtLcXIm4xlklVzO.png";
 

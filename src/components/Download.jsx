@@ -6,7 +6,7 @@ function Download() {
     <>
       <section className="download-section">
         <div className="container">
-          <div className="download-text">
+          {/* <div className="download-text">
             <h2>Download our app to get most out of it</h2>
             <p>
               Thrown shy denote ten ladies though ask saw. Or by to he going
@@ -17,7 +17,7 @@ function Download() {
               <img alt="download_img" src={Img2} />
               <img alt="download_img" src={Img1} />
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
