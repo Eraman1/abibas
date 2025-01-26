@@ -1,5 +1,7 @@
+import BackToTop from "../components/BackToTop";
 import Footer from "../components/Footer";
 import HeroPages from "../components/HeroPages";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 function Contact() {
   return (
@@ -16,15 +18,16 @@ function Contact() {
                 years of experience.
               </p>
               <a href="/">
-                <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
+                <i className="fa-solid fa-phone"></i>&nbsp; +91-8123254305
               </a>
               <a href="/">
                 <i className="fa-solid fa-envelope"></i>&nbsp;
-                carrental@xyz.com
+                contact@abibasmotors.com
               </a>
               <a href="/">
-                <i className="fa-solid fa-location-dot"></i>&nbsp; Bengaluru,
-                Karnatka
+                <i className="fa-solid fa-location-dot"></i>&nbsp; No. 235, 13th
+                Cross, 2nd floor,Indiranagar Bangalore North, Karnataka, India -
+                560038
               </a>
             </div>
             <div className="contact-div__form">
@@ -38,6 +41,10 @@ function Contact() {
                   Email <b>*</b>
                 </label>
                 <input type="email" placeholder="youremail@example.com"></input>
+                <label>
+                  Contant Number <b>*</b>
+                </label>
+                <input type="text" placeholder="+91 1234567890"></input>
 
                 <label>
                   Tell us about it <b>*</b>
@@ -56,15 +63,17 @@ function Contact() {
           <div className="book-banner__overlay"></div>
           <div className="container">
             <div className="text-content">
-              <h2>Book a car by getting in touch with us</h2>
+              <h2>Book a Ev Scooter by getting in touch with us</h2>
               <span>
                 <i className="fa-solid fa-phone"></i>
-                <h3>(123) 456-7869</h3>
+                <h3>+91-8123254305</h3>
               </span>
             </div>
           </div>
         </div>
         <Footer />
+        <BackToTop />
+        <WhatsAppButton />
       </section>
     </>
   );

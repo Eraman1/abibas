@@ -7,6 +7,8 @@ import CarImg4 from "../images/cars-big/bmw-box.png";
 import CarImg5 from "../images/cars-big/benz-box.png";
 import CarImg6 from "../images/cars-big/passat-box.png";
 import { Link } from "react-router-dom";
+import BackToTop from "../components/BackToTop";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 function Models() {
   return (
@@ -252,7 +254,7 @@ function Models() {
                   </div>
                   <div className="models-div__box__descr__name-price__details">
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; CC
+                      <i className="fa-solid fa-car-side"></i> &nbsp; CC Veder
                     </span>
                     <span style={{ textAlign: "right" }}>
                       4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
@@ -278,15 +280,17 @@ function Models() {
           <div className="book-banner__overlay"></div>
           <div className="container">
             <div className="text-content">
-              <h2>Book a car by getting in touch with us</h2>
+              <h2>Book a Ev Scooter by getting in touch with us</h2>
               <span>
                 <i className="fa-solid fa-phone"></i>
-                <h3>(123) 456-7869</h3>
+                <h3>+91-8123254305</h3>
               </span>
             </div>
           </div>
         </div>
         <Footer />
+        <BackToTop />
+        <WhatsAppButton />
       </section>
     </>
   );

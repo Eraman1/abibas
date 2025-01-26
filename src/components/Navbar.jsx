@@ -3,30 +3,30 @@ import Logo from "../images/logo/abibas.jpg";
 import { useEffect, useState } from "react";
 
 function Navbar() {
-  const [nav, setNav] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [nav, setNav] = useState(false); // For mobile nav
+  const [modal, setModal] = useState(false); // For modal
+  const [dropdown, setDropdown] = useState(false); // For dropdown menu
 
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [zipcode, setZipCode] = useState("");
+  // Form states
+  const [form, setForm] = useState({
+    name: "",
+    lastName: "",
+    phone: "",
+    age: "",
+    email: "",
+    address: "",
+    city: "",
+    zipcode: "",
+  });
 
-  const handleName = (e) => setName(e.target.value);
-  const handleLastName = (e) => setLastName(e.target.value);
-  const handlePhone = (e) => setPhone(e.target.value);
-  const handleAge = (e) => setAge(e.target.value);
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handleAddress = (e) => setAddress(e.target.value);
-  const handleCity = (e) => setCity(e.target.value);
-  const handleZip = (e) => setZipCode(e.target.value);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-  const openNav = () => setNav(!nav);
-  const openModal = () => setModal(true);
-  const closeModal = () => setModal(false);
+  const toggleNav = () => setNav(!nav);
+  const toggleModal = () => setModal(!modal);
+  const toggleDropdown = () => setDropdown(!dropdown);
 
   useEffect(() => {
     document.body.style.overflow = modal ? "hidden" : "auto";
@@ -40,50 +40,69 @@ function Navbar() {
 
   return (
     <>
+      {/* Modal Overlay */}
       <div
-        onClick={closeModal}
+        onClick={toggleModal}
         className={`modal-overlay ${modal ? "active-modal" : ""}`}
       ></div>
 
       <nav>
         {/* Mobile Navbar */}
         <div className={`mobile-navbar ${nav ? "open-nav" : ""}`}>
-          <div onClick={openNav} className="mobile-navbar__close">
+          <div onClick={toggleNav} className="mobile-navbar__close">
             <i className="fa-solid fa-xmark"></i>
           </div>
           <ul className="mobile-navbar__links">
             <li>
-              <Link onClick={openNav} to="/">
+              <Link onClick={toggleNav} to="/">
                 Home
               </Link>
             </li>
             <li>
-              <Link onClick={openNav} to="/about">
+              <Link onClick={toggleNav} to="/about">
                 About
               </Link>
             </li>
-            <li>
-              <Link onClick={openNav} to="/models">
-                Vehicle Models
-              </Link>
+            {/* Dropdown */}
+            <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+              <span className="dropdown-title">Vehicle Models</span>
+              {dropdown && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link onClick={toggleNav} to="/models/scooter1">
+                      V-PASEO
+                    </Link>
+                  </li>
+                  <li>
+                    <Link onClick={toggleNav} to="/models/scooter2">
+                      RIXEN
+                    </Link>
+                  </li>
+                  <li>
+                    <Link onClick={toggleNav} to="/models/scooter3">
+                      RORSHIP
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </li>
-            <li>
-              <Link onClick={openNav} to="/testimonials">
+            {/* <li>
+              <Link onClick={toggleNav} to="/testimonials">
                 Testimonials
               </Link>
-            </li>
-            <li>
-              <Link onClick={openNav} to="/team">
+            </li> */}
+            {/* <li>
+              <Link onClick={toggleNav} to="/team">
                 Join Our Team
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link onClick={openNav} to="/blog">
+              <Link onClick={toggleNav} to="/blog">
                 Blog
               </Link>
             </li>
             <li>
-              <Link onClick={openNav} to="/contact">
+              <Link onClick={toggleNav} to="/contact">
                 Contact
               </Link>
             </li>
@@ -104,15 +123,32 @@ function Navbar() {
             <li>
               <Link to="/about">About</Link>
             </li>
-            <li>
-              <Link to="/models">Vehicle Models</Link>
+            <li
+              className="dropdown"
+              onMouseEnter={toggleDropdown}
+              onMouseLeave={toggleDropdown}
+            >
+              <span className="dropdown-title">Vehicle Models</span>
+              {dropdown && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/models">V-PASEO</Link>
+                  </li>
+                  <li>
+                    <Link to="/models">RIXEN</Link>
+                  </li>
+                  <li>
+                    <Link to="/models">RORSHIP</Link>
+                  </li>
+                </ul>
+              )}
             </li>
-            <li>
+            {/* <li>
               <Link to="/testimonials">Testimonials</Link>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <Link to="/team">Join Our Team</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/blog">Blog</Link>
             </li>
@@ -121,12 +157,9 @@ function Navbar() {
             </li>
           </ul>
           <div className="navbar__buttons">
-            {/* <div className="reserve-button">
-              <button onClick={confirmBooking}>Reserve Now</button>
-            </div> */}
             <Link
-              onClick={openModal}
-              className="navbar__buttons__sign-in "
+              onClick={toggleModal}
+              className="navbar__buttons__sign-in"
               to="/"
             >
               Dealership
@@ -137,7 +170,7 @@ function Navbar() {
           </div>
 
           {/* Mobile Hamburger */}
-          <div className="mobile-hamb" onClick={openNav}>
+          <div className="mobile-hamb" onClick={toggleNav}>
             <i className="fa-solid fa-bars"></i>
           </div>
         </div>
@@ -147,42 +180,33 @@ function Navbar() {
       <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
         <div className="booking-modal__title">
           <h2>Complete Reservation</h2>
-          <i onClick={closeModal} className="fa-solid fa-xmark"></i>
-        </div>
-        {/* message */}
-        <div className="booking-modal__message">
-          <h4>
-            <i className="fa-solid fa-circle-info"></i> Upon completing this
-            reservation enquiry, you will receive:
-          </h4>
-          <p>
-            Your rental voucher to produce on arrival at the rental desk and a
-            toll-free customer support number.
-          </p>
+          <i onClick={toggleModal} className="fa-solid fa-xmark"></i>
         </div>
         <form className="info-form" onSubmit={confirmBooking}>
           <div className="info-form__2col">
             <span>
               <label>
-                First Name <b>*</b>
+                Name of the applicant <b>*</b>
               </label>
               <input
-                value={name}
-                onChange={handleName}
+                name="name"
+                value={form.name}
+                onChange={handleInputChange}
                 type="text"
-                placeholder="Enter your first name"
+                placeholder="Enter your full name"
                 required
               />
             </span>
             <span>
               <label>
-                Last Name <b>*</b>
+                Email ID of the applicant <b>*</b>
               </label>
               <input
-                value={lastName}
-                onChange={handleLastName}
-                type="text"
-                placeholder="Enter your last name"
+                name="email"
+                value={form.lastName}
+                onChange={handleInputChange}
+                type="email"
+                placeholder="Enter your email"
                 required
               />
             </span>
@@ -190,39 +214,55 @@ function Navbar() {
           <div className="info-form__2col">
             <span>
               <label>
-                Phone Number <b>*</b>
+                Applicant's Contact Number <b>*</b>
               </label>
               <input
-                value={phone}
-                onChange={handlePhone}
+                name="phone"
+                value={form.phone}
+                onChange={handleInputChange}
                 type="tel"
-                placeholder="Enter your phone number"
+                placeholder="Enter your contact number"
                 required
               />
             </span>
             <span>
               <label>
-                Age <b>*</b>
+                Applicant's age <b>*</b>
               </label>
               <input
-                value={age}
-                onChange={handleAge}
+                name="age"
+                value={form.age}
+                onChange={handleInputChange}
                 type="number"
                 placeholder="18"
                 required
               />
             </span>
           </div>
-          <div className="info-form__1col">
+          <div className="info-form__2col">
             <span>
               <label>
-                Email <b>*</b>
+                Applicant's Educational Qualification <b>*</b>
               </label>
               <input
-                value={email}
-                onChange={handleEmail}
+                name="qualification"
+                value={form.email}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="Enter your Qualification"
+                required
+              />
+            </span>
+            <span>
+              <label>
+                Present Business <b>*</b>
+              </label>
+              <input
+                name="business"
+                value={form.email}
+                onChange={handleInputChange}
                 type="email"
-                placeholder="Enter your email address"
+                placeholder="Enter your present business"
                 required
               />
             </span>
@@ -233,42 +273,71 @@ function Navbar() {
                 Address <b>*</b>
               </label>
               <input
-                value={address}
-                onChange={handleAddress}
+                name="address"
+                value={form.address}
+                onChange={handleInputChange}
                 type="text"
                 placeholder="Enter your street address"
                 required
               />
             </span>
           </div>
-          <div className="info-form__2col">
+          <div className="info-form__3col">
             <span>
               <label>
-                City <b>*</b>
+                No. of Years in Business <b>*</b>
               </label>
               <input
-                value={city}
-                onChange={handleCity}
+                name="years"
+                value={form.city}
+                onChange={handleInputChange}
                 type="text"
-                placeholder="Enter your city"
+                placeholder="Enter years"
+                required
+              />
+            </span>
+            <span>
+              <label>Your Turnover</label>
+              <input
+                name="turnover"
+                value={form.zipcode}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="Enter your turnover"
                 required
               />
             </span>
             <span>
               <label>
-                Zip Code <b>*</b>
+                Investment Capacity <b>*</b>
               </label>
               <input
-                value={zipcode}
-                onChange={handleZip}
+                name="investment"
+                value={form.zipcode}
+                onChange={handleInputChange}
                 type="text"
-                placeholder="Enter your zip code"
+                placeholder="Enter investment capacity"
+                required
+              />
+            </span>
+          </div>
+          <div className="info-form__1col">
+            <span>
+              <label>
+                Please leave any comments or suggestions below.<b>*</b>
+              </label>
+              <input
+                name="answer"
+                value={form.address}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="Enter your street address"
                 required
               />
             </span>
           </div>
           <div className="reserve-button">
-            <button type="submit">Reserve Now</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>

@@ -1,5 +1,7 @@
+import BackToTop from "../components/BackToTop";
 import Footer from "../components/Footer";
 import HeroPages from "../components/HeroPages";
+import WhatsAppButton from "../components/WhatsAppButton";
 import Person1 from "../images/team/1.png";
 import Person2 from "../images/team/2.png";
 import Person3 from "../images/team/3.png";
@@ -42,12 +44,14 @@ function Team() {
               <h2>Book a Ev Scooter by getting in touch with us</h2>
               <span>
                 <i className="fa-solid fa-phone"></i>
-                <h3>(123) 456-7869</h3>
+                <h3>+91-8123254305</h3>
               </span>
             </div>
           </div>
         </div>
         <Footer />
+        <BackToTop />
+        <WhatsAppButton />
       </section>
     </>
   );

@@ -9,20 +9,26 @@ import Faq from "../components/Faq";
 import Download from "../components/Download";
 import Footer from "../components/Footer";
 import VideoCarousel from "../components/VideoCarousal";
+import BackToTop from "../components/BackToTop";
+import WhatsAppButton from "../components/WhatsAppButton";
+import BannerCarousel from "../components/VideoCarousal";
 
 function Home() {
   return (
     <>
+      {/* <BannerCarousel /> */}
       <VideoCarousel />
       <BookCar />
       <PlanTrip />
       <PickCar />
       <Banner />
       <ChooseUs />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Faq />
       <Download />
       <Footer />
+      <BackToTop />
+      <WhatsAppButton />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import Logo from "../images/logo/abibas.jpg";
+
 function Footer() {
   return (
     <>
@@ -14,8 +15,9 @@ function Footer() {
               </li>
               <li>Redefining the way you move-smarter, cleaner and faster.</li>
               <li>
-                <i className="fa fa-location"></i> &nbsp; No. 235, 13th Cross,
-                2nd floor,Indiranagar Bangalore North, Karnataka, India - 560038
+                <i className="fa fa-location-dot"></i> &nbsp; No. 235, 13th
+                Cross, 2nd floor,Indiranagar Bangalore North, Karnataka, India -
+                560038
               </li>
               <li>
                 <a href="tel:918123254305">
@@ -23,24 +25,11 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto: 
-                contact@abibasmotors.com"
-                >
+                <a href="mailto:contact@abibasmotors.com">
                   <i className="fa-solid fa-envelope"></i>
                   &nbsp; contact@abibasmotors.com
                 </a>
               </li>
-              {/* <li>
-                <a
-                  style={{ fontSize: "14px" }}
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://aadishritechnologies.com"
-                >
-                  Design with Aadishri Technologies
-                </a>
-              </li> */}
             </ul>
 
             <ul className="footer-content__2">
@@ -80,8 +69,46 @@ function Footer() {
               <li>
                 <button className="submit-email">Submit</button>
               </li>
+              <li className="social-icons">
+                <small>follow :</small>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                  <i className="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                  <i className="fa-brands fa-x"></i>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                  <i className="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                  <i className="fa-brands fa-youtube"></i>
+                </a>
+              </li>
             </ul>
           </div>
+        </div>
+        <div className="footer-bottom">
+          <p>
+            &copy; {new Date().getFullYear()} Abibas Motors India Pvt. Ltd. All
+            rights reserved.
+          </p>
+          <p>
+            Designed by{" "}
+            <a
+              href="https://aadishritechnologies.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Aadishri Technologies
+            </a>
+          </p>
         </div>
       </footer>
     </>

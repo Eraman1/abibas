@@ -89,7 +89,8 @@ body {
   list-style: none;
   gap: 2.1rem;
 }
-.navbar__links a {
+.navbar__links a,
+.dropdown {
   font-size: 1.6rem;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
@@ -101,6 +102,16 @@ body {
 .navbar__links a:hover {
   color: #18aee6;
 }
+/* navbar dorpdown css */
+
+.navbar .dropdown-title:hover {
+  color: #18aee6;
+}
+.navbar .dropdown-menu li {
+  padding: 8px !important;
+  text-decoration: underline;
+}
+/* Dropdown menu */
 
 @media (max-width: 1000px) {
   .navbar__links {
@@ -154,7 +165,7 @@ body {
   transition: all 0.3s;
 }
 .mobile-hamb:hover {
-  color: #ff4d30;
+  color: #18aee6;
 }
 @media (max-width: 1000px) {
   .mobile-hamb {
@@ -184,7 +195,7 @@ body {
       padding: 0.3rem 1rem; /* Compact padding */
 
       a {
-        text-decoration: none;
+        /* text-decoration: none; */
         color: #333;
         font-size: 1.5rem; /* Smaller text size */
         display: block;
@@ -379,12 +390,12 @@ body {
   position: fixed;
   font-size: 2.5rem;
   color: white;
-  background-color: #ff4d30;
+  background-color: #192b37;
   border: 3px solid white;
   width: 2rem;
   height: 2rem;
-  bottom: 5rem;
-  right: 5rem;
+  bottom: 8rem;
+  right: 2.2rem;
   z-index: 20;
   display: none;
   align-items: center;
@@ -464,7 +475,7 @@ body {
   margin-bottom: 1.2rem;
 }
 .book-content__box .box-form__car-type label i {
-  color: #ff4d30;
+  color: #18aee6;
 }
 .book-content__box .box-form__car-type select,
 input {
@@ -513,13 +524,15 @@ input {
   font-size: 1.8rem;
   font-weight: 500;
   color: white;
-  background-color: #ff4d30;
-  box-shadow: 0 10px 15px rgba(255, 83, 48, 0.35);
+  border: 2px solid #18aee6;
+  background-color: #18aee6;
+  /* box-shadow: 0 10px 15px skyblue; */
   cursor: pointer;
   transition: all 0.3s;
 }
 .book-content__box button:hover {
-  box-shadow: 0 10px 15px rgba(255, 83, 48, 0.55);
+  background-color: #192b37;
+  box-shadow: 0 10px 15px rgb(148, 148, 154);
 }
 
 .error-message {
@@ -609,7 +622,7 @@ input {
   display: flex;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  background-color: #ff4d30;
+  background-color: #18aee6;
   color: white;
   align-items: center;
 }
@@ -764,30 +777,41 @@ input {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  padding: 1rem 0;
+  padding: 2rem 3rem;
+}
+.info-form__3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem 3rem;
 }
 @media (max-width: 650px) {
+  .info-form__3col,
   .info-form__2col,
   .info-form__1col {
     grid-template-columns: 1fr;
   }
 }
+.info-form__3col span,
 .info-form__2col span,
 .info-form__1col span {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
+.info-form__3col span label,
 .info-form__2col span label,
 .info-form__1col span label {
   font-size: 1.6rem;
   font-weight: 500;
   color: #777777;
 }
+.info-form__3col span label b,
 .info-form__2col span label b,
 .info-form__1col span label b {
   color: #ff4d30;
 }
+.info-form__3col span input,
 .info-form__2col span input,
 .info-form__1col span input {
   padding: 14px 15px;
@@ -801,7 +825,7 @@ input {
 
 .reserve-button {
   background-color: #dbdbdb;
-  margin: 0 -3rem;
+  margin: 0;
   padding: 3rem;
   text-align: right;
 }
@@ -814,14 +838,15 @@ input {
   font-size: 2.4rem;
   color: white;
   font-weight: 700;
-  background-color: #ff4d30;
-  border: 1px solid yellow;
+  background-color: #18aee6;
+  border: 1px solid #18aee6;
   padding: 1.2rem 2rem;
   cursor: pointer;
   transition: all 0.2s;
 }
 .reserve-button button:hover {
-  background-color: #fe3516;
+  box-shadow: 0 10px 15px 0 rgb(148, 148, 154);
+  background-color: #192b37;
 }
 
 .dates-div {
@@ -856,7 +881,7 @@ input {
 }
 .plan-container__boxes {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   margin-top: 3.7rem;
   padding: 0 3rem;
@@ -875,7 +900,7 @@ input {
 }
 .plan-container__boxes__box {
   text-align: center;
-  padding: 1rem 6rem;
+  padding: 1rem 1rem;
 }
 @media (max-width: 500px) {
   .plan-container__boxes__box {
@@ -957,7 +982,7 @@ input {
   text-align: left;
 }
 .pick-box button:hover {
-  background-color: #ff4d30;
+  background-color: #18aee6;
   color: white;
 }
 
@@ -980,7 +1005,7 @@ input {
 }
 .pick-description__price {
   width: 100%;
-  background-color: #ff4d30;
+  background-color: #18aee6;
   font-size: 1.8rem;
   display: flex;
   align-items: center;
@@ -1020,7 +1045,7 @@ input {
   font-weight: 600;
   color: white;
   font-family: "Poppins", sans-serif;
-  background-color: #ff4d30;
+  background-color: #192b37;
   padding: 1rem 1rem;
   display: flex;
   width: 100%;
@@ -1030,7 +1055,7 @@ input {
   box-shadow: 6px 6px 0 #efe9e9;
 }
 .cta-btn:hover {
-  background-color: #e9381d;
+  background-color: #18aee6;
 }
 
 .box-cars {
@@ -1053,7 +1078,7 @@ input {
 }
 
 .colored-button {
-  background-color: #ff4d30 !important;
+  background-color: #18aee6 !important;
   color: white;
 }
 
@@ -1294,8 +1319,8 @@ input {
     padding: 0;
   }
 }
-.all-testimonials__box {
-  background-color: white;
+/* .all-testimonials__box {
+  background-color: rgb(207, 198, 198);
   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.08);
   width: 54rem;
   padding: 5.5rem;
@@ -1305,7 +1330,34 @@ input {
   .all-testimonials__box {
     padding: 5rem 3rem;
   }
+} */
+.slick-slide {
+  padding: 0 1rem; /* Add horizontal padding to each slide for spacing */
 }
+
+.all-testimonials__box {
+  background-color: rgb(208, 236, 245);
+  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.08);
+  width: 100%; /* Adjust width to be relative to the container */
+  padding: 5.5rem;
+  position: relative;
+}
+
+@media (max-width: 1000px) {
+  .slick-slide {
+    padding: 0 0.5rem; /* Reduce spacing on smaller screens */
+  }
+
+  .all-testimonials__box {
+    padding: 5rem 3rem;
+  }
+}
+
+/* Optional: Add spacing to the carousel container for visual balance */
+.slick-list {
+  margin: 0 -1rem; /* Offset the slide padding for proper alignment */
+}
+
 .all-testimonials__box p {
   font-size: 2.2rem;
   font-weight: 500;
@@ -1449,9 +1501,9 @@ input {
 }
 
 .active-question {
-  background-color: #ff4d30;
+  background-color: #192b37;
   color: white;
-  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+  box-shadow: 0 10px 15px 0 rgba(208, 206, 206, 0.35);
 }
 
 .download-section {
@@ -1521,7 +1573,7 @@ input {
 
 footer {
   background-color: #ffffff;
-  padding: 10rem 0;
+  padding: 5rem 0 0 0;
 }
 
 .footer-content {
@@ -1663,6 +1715,7 @@ footer {
   position: absolute;
   top: 0;
   right: 0;
+  opacity: 0.5;
   background-color: rgba(255, 255, 255, 0.92);
 }
 .hero-pages__text {
@@ -2121,20 +2174,20 @@ footer {
   margin-bottom: 2.5rem;
 }
 .contact-div__form form button {
-  background-color: #ff4d30;
+  background-color: #18aee6;
   padding: 1.8rem 3rem;
   border-radius: 0.3rem;
-  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+  box-shadow: 0 8px 10px 0 rgb(218, 237, 249);
   transition: all 0.3s;
-  border: 2px solid #ff4d30;
+  border: 2px solid #18aee6;
   color: white;
   font-size: 1.8rem;
   font-weight: 600;
   cursor: pointer;
 }
 .contact-div__form form button:hover {
-  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.6);
-  background-color: #fa4226;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.08);
+  background-color: #192b37;
 } /*# sourceMappingURL=styles.css.map */
 
 /* Video */
@@ -2196,4 +2249,58 @@ footer {
 .video-carousel__control--next {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+/* for the testimonial carousal */
+
+/* for the social icons */
+.social-icons {
+  padding: 5px;
+}
+.social-icons a {
+  margin: 10px;
+}
+
+/* for bottom design by */
+.footer-bottom {
+  background-color: #e5f4fa; /* Dark background color */
+  color: #000; /* White text color */
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.footer-bottom a {
+  color: #007bff; /* Blue color for the link */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+.whatsapp-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #25d366; /* WhatsApp green */
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.whatsapp-button a {
+  color: white;
+  font-size: 3.5rem;
+  text-decoration: none;
+}
+
+.whatsapp-button:hover {
+  background-color: #1ebe5d;
 }
