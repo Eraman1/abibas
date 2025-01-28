@@ -162,7 +162,7 @@ function BookCar() {
         <div className="container">
           <div className="book-content">
             <div className="book-content__box">
-              <h2>Book Your Electric Scooter</h2>
+              <h2>PRE BOOK YOUR DREAM SCOOTER</h2>
 
               <p className="error-message">
                 All fields required! <i className="fa-solid fa-xmark"></i>
@@ -181,14 +181,12 @@ function BookCar() {
                   </label>
                   <select value={carType} onChange={handleCar}>
                     <option>Select Model</option>
-                    <option value="Audi A1 S-Line">Audi A1 S-Line</option>
-                    <option value="VW Golf 6">VW Golf 6</option>
-                    <option value="Toyota Camry">Toyota Camry</option>
-                    <option value="BMW 320 ModernLine">
-                      BMW 320 ModernLine
-                    </option>
-                    <option value="Mercedes-Benz GLK">Mercedes-Benz GLK</option>
-                    <option value="VW Passat CC">VW Passat CC</option>
+                    <option value="RIXEN">RIXEN</option>
+                    <option value="RIXEN-ES">RIXEN-ES</option>
+                    <option value="VPASEO">VPASEO</option>
+                    <option value="VPASEO-PRO">VPASEO-PRO</option>
+                    <option value="RORSHIP">RORSHIP</option>
+                    <option value="RORSHIP-PRO">RORSHIP-PRO</option>
                   </select>
                 </div>
 

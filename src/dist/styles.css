@@ -997,7 +997,7 @@ input {
 }
 .pick-car img {
   width: 100%;
-  margin-top: 6rem;
+  margin-top: -3rem;
 }
 
 .pick-description {
@@ -1006,17 +1006,17 @@ input {
 .pick-description__price {
   width: 100%;
   background-color: #18aee6;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
   color: white;
-  padding: 0.3rem 1.9rem;
+  padding: 0.8rem 1.9rem;
   white-space: nowrap;
 }
 .pick-description__price span {
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 500;
 }
 .pick-description__table {
   display: grid;
@@ -1447,9 +1447,9 @@ input {
 }
 
 .faq-section {
-  background-image: url("/src/images/chooseUs/bg.png");
+  background-image: url("/src/images/cars-big/rixen.png");
   padding: 10rem 0;
-  background-size: auto;
+  background-size: 45rem;
   background-repeat: no-repeat;
   background-position: 0 70%;
 }
@@ -1549,13 +1549,13 @@ input {
 }
 
 .download-section {
-  background-image: url("/src/images/download/repulic.png");
+  background-image: url("/src/images/download/abibasfooter.png");
   background-color: #f8f8f8;
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 50rem !important;
+  height: auto;
   padding: 10rem 0;
 }
 @media (max-width: 700px) {
@@ -1808,8 +1808,8 @@ footer {
   }
 }
 .about-main__img {
-  width: 43rem;
-  height: 43rem;
+  width: 50rem;
+  height: 50rem;
 }
 @media (max-width: 960px) {
   .about-main__img {
@@ -1894,9 +1894,10 @@ footer {
   display: flex;
   width: 100%;
   height: 20rem;
-  background-image: url("/src/images/banners/book-banner.png");
+  background-image: url("/src/images/banners/baner.png");
   position: relative;
   margin-top: 7rem;
+  background-repeat: round;
 }
 @media (max-width: 750px) {
   .book-banner {
@@ -1906,7 +1907,7 @@ footer {
   }
 }
 .book-banner__overlay {
-  background-color: #2d2d2d;
+  /* background-color: #2d2d2d; */
   opacity: 0.89;
   width: 100%;
   height: 100%;
@@ -2028,7 +2029,7 @@ footer {
   text-align: right;
 }
 .models-div__box__descr__name-price__price h4 {
-  font-size: 2.8rem;
+  font-size: 2rem;
 }
 .models-div__box__descr__name-price__price p {
   font-size: 1.6rem;
@@ -2054,18 +2055,18 @@ footer {
   color: #010103;
 }
 .models-div__box__descr__name-price__btn {
-  background-color: #ff4d30;
+  background-color: #18aee6;
   padding: 1.8rem 3rem;
   border-radius: 0.3rem;
-  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+  box-shadow: 0 10px 15px 0 rgba(210, 210, 209, 0.35);
   transition: all 0.3s;
-  border: 2px solid #ff4d30;
+  border: 2px solid #18aee6;
   font-size: 1.8rem;
   cursor: pointer;
 }
 .models-div__box__descr__name-price__btn:hover {
-  box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.6);
-  background-color: #fa4226;
+  box-shadow: 0 10px 15px 0 rgba(207, 206, 206, 0.6);
+  background-color: #192b37;
 }
 .models-div__box__descr__name-price__btn a {
   text-decoration: none;
@@ -2233,24 +2234,39 @@ footer {
 } /*# sourceMappingURL=styles.css.map */
 
 /* Video */
+/* Video Carousel */
 .video-carousel {
+  margin: 8.5rem 0 0 0; /* Base margin for larger screens */
   position: relative;
   width: 100%;
-  height: 500px;
-  /* overflow: hidden; */
+  /* height: 50rem; Default height for desktop */
+  aspect-ratio: 3 / 1;
 }
-
-@media (min-width: 768px) {
+/* @media (max-width: 1024px) {
   .video-carousel {
-    height: 400px;
+    height: 35rem;
+  }
+} */
+
+/* @media (max-width: 768px) {
+  .video-carousel {
+    height: 23rem; Adjust height for tablets 
+     margin: 6rem 0 0 0; Adjust spacing for medium screens
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 480px) {
   .video-carousel {
-    height: 500px;
+    height: 15rem; Adjust height for small devices
+    margin: 4rem 0 0 0; Tighten spacing for phones
   }
-}
+} */
+/* @media (max-width: 360px) {
+  .video-carousel {
+    height: 12rem; Adjust height for small devices
+    margin: 4rem 0 0 0; Tighten spacing for phones
+  }
+} */
 
 .video-carousel__video,
 .video-carousel__image {
@@ -2268,15 +2284,19 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* pointer-events: none; Avoid conflicts with other elements */
 }
 
 .video-carousel__control {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
+  font-size: 1rem; /* Base font size for icons */
   transition: background-color 0.3s;
+  /* pointer-events: auto; Enable button interaction */
+  z-index: 10; /* Ensure buttons stay on top of content */
 }
 
 .video-carousel__control:hover {
@@ -2291,6 +2311,34 @@ footer {
 .video-carousel__control--next {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .video-carousel__control {
+    padding: 10px; /* Reduce padding for tablets */
+    font-size: 0.875rem; /* Adjust icon size */
+  }
+}
+
+@media (max-width: 480px) {
+  .video-carousel__control {
+    padding: 8px; /* Further reduce padding for small devices */
+    font-size: 0.75rem; /* Smaller icon size for phones */
+  }
+}
+
+/* Optional: Add a fallback background for better appearance */
+.video-carousel__video,
+.video-carousel__image {
+  background-color: #000; /* Ensure a clean background */
+  /* Add slight rounding for modern appearance */
+}
+
+/* Smooth transition for responsive design */
+@media (prefers-reduced-motion: no-preference) {
+  .video-carousel {
+    transition: height 0.3s ease, margin 0.3s ease;
+  }
 }
 
 /* for the testimonial carousal */
@@ -2345,4 +2393,40 @@ footer {
 
 .whatsapp-button:hover {
   background-color: #1ebe5d;
+}
+
+.terms-and-conditions h3 {
+  font-size: 2.2rem;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+.terms-and-conditions h2 {
+  font-size: 4.2rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+.terms-and-conditions p {
+  font-size: 1.6rem;
+  color: #706f7b;
+  font-family: "Rubik", sans-serif;
+  line-height: 1.5;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.terms-and-conditions li {
+  font-size: 1.6rem;
+  color: #706f7b;
+  font-family: "Rubik", sans-serif;
+  line-height: 1.5;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+.terms-and-conditions i {
+  font-size: 1.4rem;
+  color: #706f7b;
+  line-height: 1.5;
 }

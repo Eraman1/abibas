@@ -1,19 +1,18 @@
 function Banner() {
   return (
     <>
-      <section className="banner-section">
+      <div className="book-banner">
+        <div className="book-banner__overlay"></div>
         <div className="container">
-          <div className="banner-content">
-            <div className="banner-content__text">
-              <h2>Call us to book your EV Scooter!</h2>
-              <p>
-                <i className="fa-solid fa-phone"></i>{" "}
-                <span>+91-8123254305</span>
-              </p>
-            </div>
+          <div className="text-content">
+            <h2>Book a Ev Scooter by getting in touch with us</h2>
+            <span>
+              <i className="fa-solid fa-phone"></i>
+              <h3>+91-8123254305</h3>
+            </span>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

@@ -3,7 +3,7 @@ import CarBox from "./CarBox";
 import { CAR_DATA } from "./CarData";
 
 function PickCar() {
-  const [active, setActive] = useState("SecondCar");
+  const [active, setActive] = useState("FirstCar");
   const [colorBtn, setColorBtn] = useState("btn1");
 
   const btnID = (id) => {
@@ -21,10 +21,10 @@ function PickCar() {
           <div className="pick-container">
             <div className="pick-container__title">
               <h3>Vehicle Models</h3>
-              <h2>Our rental fleet</h2>
+              <h2>Our Scooters</h2>
               <p>
-                Choose from a variety of our amazing vehicles to rent for your
-                next adventure or business trip
+                Choose from a variety of our amazing EV-Scooters to buy for your
+                Stylish and Adventures Journey.
               </p>
             </div>
             <div className="pick-container__car-content">
@@ -33,21 +33,21 @@ function PickCar() {
                 <button
                   className={`${coloringButton("btn1")}`}
                   onClick={() => {
-                    setActive("SecondCar");
+                    setActive("FirstCar");
                     btnID("btn1");
                   }}
                 >
-                  Audi A1 S-Line
+                  &nbsp;&nbsp;&nbsp; V-PASEO &nbsp;&nbsp;&nbsp;
                 </button>
                 <button
                   className={`${coloringButton("btn2")}`}
                   id="btn2"
                   onClick={() => {
-                    setActive("FirstCar");
+                    setActive("SecondCar");
                     btnID("btn2");
                   }}
                 >
-                  VW Golf 6
+                  &nbsp;&nbsp;&nbsp; V-PASEO 1.0 &nbsp;&nbsp;&nbsp;
                 </button>
                 <button
                   className={`${coloringButton("btn3")}`}
@@ -57,7 +57,7 @@ function PickCar() {
                     btnID("btn3");
                   }}
                 >
-                  Toyota Camry
+                  &nbsp;&nbsp;&nbsp; Rixen &nbsp;&nbsp;&nbsp;
                 </button>
                 <button
                   className={`${coloringButton("btn4")}`}
@@ -67,7 +67,7 @@ function PickCar() {
                     btnID("btn4");
                   }}
                 >
-                  BMW 320 ModernLine
+                  &nbsp;&nbsp;&nbsp; Rixen-ES &nbsp;&nbsp;&nbsp;
                 </button>
                 <button
                   className={`${coloringButton("btn5")}`}
@@ -77,7 +77,7 @@ function PickCar() {
                     btnID("btn5");
                   }}
                 >
-                  Mercedes-Benz GLK
+                  &nbsp;&nbsp;&nbsp; Rorship &nbsp;&nbsp;&nbsp;
                 </button>
                 <button
                   className={`${coloringButton("btn6")}`}
@@ -87,7 +87,7 @@ function PickCar() {
                     btnID("btn6");
                   }}
                 >
-                  VW Passat CC
+                  &nbsp;&nbsp;&nbsp; Rorship-Pro &nbsp;&nbsp;&nbsp;
                 </button>
               </div>
 

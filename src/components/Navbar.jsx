@@ -67,7 +67,7 @@ function Navbar() {
             <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
               <span className="dropdown-title">Vehicle Models</span>
               {dropdown && (
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu" style={{ listStyle: "none" }}>
                   <li>
                     <Link onClick={toggleNav} to="/models/scooter1">
                       V-PASEO
@@ -110,7 +110,7 @@ function Navbar() {
         </div>
 
         {/* Desktop Navbar */}
-        <div className="navbar">
+        <div className="navbar" style={{ position: "fixed" }}>
           <div className="navbar__img">
             <Link to="/" onClick={() => window.scrollTo(0, 0)}>
               <img src={Logo} alt="logo-img" />

@@ -1,11 +1,11 @@
 import Footer from "../components/Footer";
 import HeroPages from "../components/HeroPages";
-import CarImg1 from "../images/cars-big/audi-box.png";
-import CarImg2 from "../images/cars-big/golf6-box.png";
-import CarImg3 from "../images/cars-big/toyota-box.png";
-import CarImg4 from "../images/cars-big/bmw-box.png";
-import CarImg5 from "../images/cars-big/benz-box.png";
-import CarImg6 from "../images/cars-big/passat-box.png";
+import CarImg1 from "../images/cars-big/vpaseo5.png";
+import CarImg2 from "../images/cars-big/rixen2.png";
+import CarImg3 from "../images/cars-big/rorship.png";
+import CarImg4 from "../images/cars-big/vpaseo5.png";
+import CarImg5 from "../images/cars-big/rixen2.png";
+import CarImg6 from "../images/cars-big/rorship.png";
 import { Link } from "react-router-dom";
 import BackToTop from "../components/BackToTop";
 import WhatsAppButton from "../components/WhatsAppButton";
@@ -23,7 +23,7 @@ function Models() {
                 <div className="models-div__box__descr">
                   <div className="models-div__box__descr__name-price">
                     <div className="models-div__box__descr__name-price__name">
-                      <p>Audi A1</p>
+                      <p>V-Perso</p>
                       <span>
                         <i className="fa-solid fa-star"></i>
                         <i className="fa-solid fa-star"></i>
@@ -33,27 +33,25 @@ function Models() {
                       </span>
                     </div>
                     <div className="models-div__box__descr__name-price__price">
-                      <h4>$45</h4>
-                      <p>per day</p>
+                      <h4>₹1,19,999/-</h4>
+                      <p>Starting Price</p>
                     </div>
                   </div>
                   <div className="models-div__box__descr__name-price__details">
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Audi
+                      <i className="fa-solid fa-gauge-simple-high"></i> &nbsp;
+                      Speed
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>60km/h</span>
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Manual
+                      <i className="fa-sharp-duotone fa-solid fa-road"></i>{" "}
+                      &nbsp; Range
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      Diesel &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>80-100km</span>
                   </div>
                   <div className="models-div__box__descr__name-price__btn">
                     <Link onClick={() => window.scrollTo(0, 0)} to="/">
-                      Book Ride
+                      Book Now
                     </Link>
                   </div>
                 </div>
@@ -66,7 +64,7 @@ function Models() {
                 <div className="models-div__box__descr">
                   <div className="models-div__box__descr__name-price">
                     <div className="models-div__box__descr__name-price__name">
-                      <p>Golf 6</p>
+                      <p>Rixen</p>
                       <span>
                         <i className="fa-solid fa-star"></i>
                         <i className="fa-solid fa-star"></i>
@@ -76,27 +74,25 @@ function Models() {
                       </span>
                     </div>
                     <div className="models-div__box__descr__name-price__price">
-                      <h4>$37</h4>
-                      <p>per day</p>
+                      <h4>₹1,07,000/-</h4>
+                      <p>Starting Price</p>
                     </div>
                   </div>
                   <div className="models-div__box__descr__name-price__details">
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; VW
+                      <i className="fa-solid fa-gauge-simple-high"></i> &nbsp;
+                      Speed
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>60km/h</span>
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Manual
+                      <i className="fa-sharp-duotone fa-solid fa-road"></i>{" "}
+                      &nbsp; Range
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      Diesel &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>80-100km</span>
                   </div>
                   <div className="models-div__box__descr__name-price__btn">
                     <Link onClick={() => window.scrollTo(0, 0)} to="/">
-                      Book Ride
+                      Book Now
                     </Link>
                   </div>
                 </div>
@@ -109,7 +105,7 @@ function Models() {
                 <div className="models-div__box__descr">
                   <div className="models-div__box__descr__name-price">
                     <div className="models-div__box__descr__name-price__name">
-                      <p>Toyota</p>
+                      <p>Rorship</p>
                       <span>
                         <i className="fa-solid fa-star"></i>
                         <i className="fa-solid fa-star"></i>
@@ -119,27 +115,25 @@ function Models() {
                       </span>
                     </div>
                     <div className="models-div__box__descr__name-price__price">
-                      <h4>$30</h4>
-                      <p>per day</p>
+                      <h4>₹1,87,000/-</h4>
+                      <p>Starting Price</p>
                     </div>
                   </div>
                   <div className="models-div__box__descr__name-price__details">
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Camry
+                      <i className="fa-solid fa-gauge-simple-high"></i> &nbsp;
+                      Speed
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>90-110km/h</span>
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Manual
+                      <i className="fa-sharp-duotone fa-solid fa-road"></i>{" "}
+                      &nbsp; Range
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      Diesel &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>180-212km</span>
                   </div>
                   <div className="models-div__box__descr__name-price__btn">
                     <Link onClick={() => window.scrollTo(0, 0)} to="/">
-                      Book Ride
+                      Book Now
                     </Link>
                   </div>
                 </div>
@@ -152,7 +146,7 @@ function Models() {
                 <div className="models-div__box__descr">
                   <div className="models-div__box__descr__name-price">
                     <div className="models-div__box__descr__name-price__name">
-                      <p>BMW 320</p>
+                      <p>V-Parso 1.0</p>
                       <span>
                         <i className="fa-solid fa-star"></i>
                         <i className="fa-solid fa-star"></i>
@@ -162,27 +156,25 @@ function Models() {
                       </span>
                     </div>
                     <div className="models-div__box__descr__name-price__price">
-                      <h4>$35</h4>
-                      <p>per day</p>
+                      <h4>₹1,69,000/-</h4>
+                      <p>Starting Price</p>
                     </div>
                   </div>
                   <div className="models-div__box__descr__name-price__details">
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; ModernLine
+                      <i className="fa-solid fa-gauge-simple-high"></i> &nbsp;
+                      Speed
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>80km/h</span>
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Manual
+                      <i className="fa-sharp-duotone fa-solid fa-road"></i>{" "}
+                      &nbsp; Range
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      Diesel &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>170-200km</span>
                   </div>
                   <div className="models-div__box__descr__name-price__btn">
                     <Link onClick={() => window.scrollTo(0, 0)} to="/">
-                      Book Ride
+                      Book Now
                     </Link>
                   </div>
                 </div>
@@ -195,7 +187,7 @@ function Models() {
                 <div className="models-div__box__descr">
                   <div className="models-div__box__descr__name-price">
                     <div className="models-div__box__descr__name-price__name">
-                      <p>Mercedes</p>
+                      <p>Rixen-ES</p>
                       <span>
                         <i className="fa-solid fa-star"></i>
                         <i className="fa-solid fa-star"></i>
@@ -205,40 +197,38 @@ function Models() {
                       </span>
                     </div>
                     <div className="models-div__box__descr__name-price__price">
-                      <h4>$50</h4>
-                      <p>per day</p>
+                      <h4>₹1,59,000/-</h4>
+                      <p>pStarting Price</p>
                     </div>
                   </div>
                   <div className="models-div__box__descr__name-price__details">
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Benz GLK
+                      <i className="fa-solid fa-gauge-simple-high"></i> &nbsp;
+                      Speed
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>80km/h</span>
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Manual
+                      <i className="fa-sharp-duotone fa-solid fa-road"></i>{" "}
+                      &nbsp; Range
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      Diesel &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>150-170km</span>
                   </div>
                   <div className="models-div__box__descr__name-price__btn">
                     <Link onClick={() => window.scrollTo(0, 0)} to="/">
-                      Book Ride
+                      Book Now
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="models-div__box">
+            {/* <div className="models-div__box">
               <div className="models-div__box__img">
                 <img src={CarImg6} alt="car_img" />
                 <div className="models-div__box__descr">
                   <div className="models-div__box__descr__name-price">
                     <div className="models-div__box__descr__name-price__name">
-                      <p>VW Passat</p>
+                      <p>Rorship pro</p>
                       <span>
                         <i className="fa-solid fa-star"></i>
                         <i className="fa-solid fa-star"></i>
@@ -248,32 +238,30 @@ function Models() {
                       </span>
                     </div>
                     <div className="models-div__box__descr__name-price__price">
-                      <h4>$25</h4>
-                      <p>per day</p>
+                      <h4>₹1,87,000/-</h4>
+                      <p>Starting Price</p>
                     </div>
                   </div>
                   <div className="models-div__box__descr__name-price__details">
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; CC Veder
+                      <i className="fa-solid fa-gauge-simple-high"></i> &nbsp;
+                      Speed
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      4/5 &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>90-110km/h</span>
                     <span>
-                      <i className="fa-solid fa-car-side"></i> &nbsp; Manual
+                      <i className="fa-sharp-duotone fa-solid fa-road"></i>{" "}
+                      &nbsp; Range
                     </span>
-                    <span style={{ textAlign: "right" }}>
-                      Diesel &nbsp; <i className="fa-solid fa-car-side"></i>
-                    </span>
+                    <span style={{ textAlign: "right" }}>180-212km</span>
                   </div>
                   <div className="models-div__box__descr__name-price__btn">
                     <Link onClick={() => window.scrollTo(0, 0)} to="/">
-                      Book Ride
+                      Book Now
                     </Link>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="book-banner">

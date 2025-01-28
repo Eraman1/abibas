@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 const videos = [
   process.env.PUBLIC_URL +
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rixen-B6vCSuwkgfByVB2PoW9X0oNGottA3h.mp4",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/abibbasBanner-dPiTt6UDS7BEiWawtLcXIm4xlklVzO.png",
   process.env.PUBLIC_URL +
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rixen-B6vCSuwkgfByVB2PoW9X0oNGottA3h.mp4",
   process.env.PUBLIC_URL +
@@ -28,7 +28,7 @@ function VideoCarousel() {
   };
 
   const prevItem = () => {
-    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+    setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
   };
 
   useEffect(() => {

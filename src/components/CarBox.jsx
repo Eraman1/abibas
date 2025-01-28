@@ -19,42 +19,45 @@ function CarBox({ data, carID }) {
           {/* description */}
           <div className="pick-description">
             <div className="pick-description__price">
-              <span>₹{car.price}</span> Starting price
+              <span>₹ {car.price}/-</span> Starting price
             </div>
             <div className="pick-description__table">
               <div className="pick-description__table__col">
-                <span>Model</span>
-                <span>{car.model}</span>
+                <span>MOTOR</span>
+                <span>{car.motor}</span>
               </div>
 
               <div className="pick-description__table__col">
-                <span>Mark</span>
-                <span>{car.mark}</span>
+                <span>SPEED</span>
+                <span>{car.speed}</span>
               </div>
 
               <div className="pick-description__table__col">
-                <span>Year</span>
-                <span>{car.year}</span>
+                <span>BREAK</span>
+                <span>{car.break}</span>
               </div>
 
               <div className="pick-description__table__col">
-                <span>Doors</span>
-                <span>{car.doors}</span>
+                <span>Battery</span>
+                <span>{car.battery}</span>
               </div>
 
               <div className="pick-description__table__col">
-                <span>AC</span>
-                <span>{car.air}</span>
+                <span>Range</span>
+                <span>{car.range}</span>
               </div>
 
               <div className="pick-description__table__col">
-                <span>Transmission</span>
-                <span>{car.transmission}</span>
+                <span>INSTRUMENT</span>
+                <span>{car.instrument}</span>
               </div>
-
               <div className="pick-description__table__col">
-                <span>Fuel</span>
-                <span>{car.fuel}</span>
+                <span>TYRE</span>
+                <span>{car.tyre}</span>
+              </div>
+              <div className="pick-description__table__col">
+                <span>ADDITIONAL</span>
+                <span>{car.additional}</span>
               </div>
             </div>
             {/* btn cta */}
