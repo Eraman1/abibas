@@ -67,19 +67,19 @@ function Navbar() {
             <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
               <span className="dropdown-title">Vehicle Models</span>
               {dropdown && (
-                <ul className="dropdown-menu" style={{ listStyle: "none" }}>
+                <ul className="dropdown-menu">
                   <li>
-                    <Link onClick={toggleNav} to="/models/scooter1">
+                    <Link onClick={toggleNav} to="/models">
                       V-PASEO
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={toggleNav} to="/models/scooter2">
+                    <Link onClick={toggleNav} to="/models">
                       RIXEN
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={toggleNav} to="/models/scooter3">
+                    <Link onClick={toggleNav} to="/models">
                       RORSHIP
                     </Link>
                   </li>
@@ -107,6 +107,18 @@ function Navbar() {
               </Link>
             </li>
           </ul>
+          <div className="navbar__buttons">
+            <Link
+              onClick={toggleModal}
+              className="navbar__buttons__sign-in"
+              to="/"
+            >
+              Dealership
+            </Link>
+            <Link className="navbar__buttons__register" to="/">
+              Book Now
+            </Link>
+          </div>
         </div>
 
         {/* Desktop Navbar */}

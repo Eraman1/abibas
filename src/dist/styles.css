@@ -247,14 +247,20 @@ body {
   gap: 3rem;
   text-align: center;
 }
-.mobile-navbar__links li a {
+.mobile-navbar__links li a,
+.dropdown-title {
   text-decoration: none;
   color: #010103;
   font-weight: 500;
   transition: all 0.3s;
 }
 .mobile-navbar__links li a:hover {
-  color: #ff4d30;
+  color: #18aee6;
+  text-decoration: underline;
+}
+.mobile-navbar__links .dropdown-menu {
+  list-style: none;
+  text-decoration: underline;
 }
 
 .open-nav {
@@ -1653,8 +1659,8 @@ footer {
 .footer-content__1 li a:hover {
   color: #18aee6;
 }
-.footer-content__1 li:nth-child(1) {
-  font-size: 2.4rem;
+.footer-content__1 li:nth-child(1) img {
+  width: 18rem;
   /* margin-bottom: 1.5rem; */
 }
 .footer-content__1 li:nth-child(1) span {

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import BgShape from "../images/hero/hero-bg.png";
-import HeroCar from "../images/hero/main-car.png";
-import { useEffect, useState } from "react";
+import HeroCar from "../images/cars-big/rixen2.png";
+// import { useEffect, useState } from "react";
 
 function Hero() {
-  const [goUp, setGoUp] = useState(false);
+  // const [goUp, setGoUp] = useState(false);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: (0, 0), behavior: "smooth" });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: (0, 0), behavior: "smooth" });
+  // };
 
   const bookBtn = () => {
     document
@@ -16,20 +16,20 @@ function Hero() {
       .scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    const onPageScroll = () => {
-      if (window.pageYOffset > 600) {
-        setGoUp(true);
-      } else {
-        setGoUp(false);
-      }
-    };
-    window.addEventListener("scroll", onPageScroll);
+  // useEffect(() => {
+  //   const onPageScroll = () => {
+  //     if (window.pageYOffset > 600) {
+  //       setGoUp(true);
+  //     } else {
+  //       setGoUp(false);
+  //     }
+  //   };
+  //   window.addEventListener("scroll", onPageScroll);
 
-    return () => {
-      window.removeEventListener("scroll", onPageScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", onPageScroll);
+  //   };
+  // }, []);
   return (
     <>
       <section id="home" className="hero-section">
@@ -69,12 +69,12 @@ function Hero() {
         </div>
 
         {/* page up */}
-        <div
+        {/* <div
           onClick={scrollToTop}
           className={`scroll-up ${goUp ? "show-scroll" : ""}`}
         >
           <i className="fa-solid fa-angle-up"></i>
-        </div>
+        </div> */}
       </section>
     </>
   );

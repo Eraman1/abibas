@@ -10,6 +10,7 @@ import Team from "./Pages/Team";
 import Contact from "./Pages/Contact";
 import Refund from "./Pages/Refund";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import Model from "./Pages/model";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="refund" element={<Refund />} />
         <Route path="term&Condition" element={<TermAndCondition />} />
         <Route path="privacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="model" element={<Model />} />
       </Routes>
     </>
   );

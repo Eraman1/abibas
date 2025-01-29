@@ -7,7 +7,7 @@ function Footer() {
         <div className="container">
           <div className="footer-content">
             <ul className="footer-content__1">
-              <li className="navbar__img">
+              <li className="footer_logo">
                 <img src={Logo} alt="logo-img" />
               </li>
               <li>
