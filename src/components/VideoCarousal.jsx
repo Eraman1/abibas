@@ -1,38 +1,52 @@
 import React, { useState, useRef, useEffect } from "react";
+import axiosInstance from "../api/axios"; // Adjust the import as per your file structure
 
-const videos = [
-  process.env.PUBLIC_URL +
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/abibbasBanner-dPiTt6UDS7BEiWawtLcXIm4xlklVzO.png",
-  process.env.PUBLIC_URL +
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rixen-B6vCSuwkgfByVB2PoW9X0oNGottA3h.mp4",
-  process.env.PUBLIC_URL +
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rixen-B6vCSuwkgfByVB2PoW9X0oNGottA3h.mp4",
-];
-
-const fallbackImages = [
-  process.env.PUBLIC_URL +
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/abibbasBanner-dPiTt6UDS7BEiWawtLcXIm4xlklVzO.png",
-  process.env.PUBLIC_URL +
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/abibbasBanner-dPiTt6UDS7BEiWawtLcXIm4xlklVzO.png",
-  process.env.PUBLIC_URL +
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/abibbasBanner-dPiTt6UDS7BEiWawtLcXIm4xlklVzO.png",
-];
-
-function VideoCarousel() {
+const VideoCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVideoSupported, setIsVideoSupported] = useState(true);
   const videoRef = useRef(null);
 
-  const nextItem = () => {
-    setCurrentIndex((prev) => (prev + 1) % videos.length);
-  };
+  const [banners, setBanners] = useState([]);
 
-  const prevItem = () => {
-    setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
+  // Fetch banners from the API
+  const fetchSlider = async () => {
+    try {
+      const response = await axiosInstance.get("/slider/getsliders");
+      setBanners(response.data.sliders); // Assuming response.data.sliders contains the banners
+    } catch (error) {
+      console.error("Error fetching banners:", error);
+    }
   };
 
   useEffect(() => {
-    if (videoRef.current) {
+    fetchSlider();
+  }, []);
+
+  // Handle the carousel navigation
+  const nextItem = () => {
+    if (banners.length > 0) {
+      setCurrentIndex((prev) => (prev + 1) % banners.length);
+    }
+  };
+
+  const prevItem = () => {
+    if (banners.length > 0) {
+      setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
+    }
+  };
+
+  // Auto slide every 3-5 seconds
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextItem();
+    }, Math.random() * (5000 - 3000) + 3000); // Random time between 3-5 seconds
+
+    return () => clearInterval(intervalId); // Clean up interval on component unmount
+  }, [banners]);
+
+  // Handle video loading and fallback if needed
+  useEffect(() => {
+    if (videoRef.current && banners.length > 0) {
       const currentVideo = videoRef.current;
 
       const handleCanPlay = () => {
@@ -44,7 +58,7 @@ function VideoCarousel() {
       };
 
       const handleError = () => {
-        console.error("Video failed to load:", videos[currentIndex]);
+        console.error("Video failed to load:", banners[currentIndex]);
         setIsVideoSupported(false);
       };
 
@@ -56,35 +70,41 @@ function VideoCarousel() {
         currentVideo.removeEventListener("error", handleError);
       };
     }
-  }, [currentIndex]);
+  }, [currentIndex, banners]);
 
   return (
     <div className="video-carousel">
-      {isVideoSupported ? (
-        <video
-          ref={videoRef}
-          src={videos[currentIndex]}
-          className="video-carousel__video"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
+      {/* Ensure banners have data before rendering video or image */}
+      {banners.length > 0 ? (
+        isVideoSupported && banners[currentIndex]?.image ? (
+          <video
+            ref={videoRef}
+            src={banners[currentIndex]?.image} // Video URL from banner
+            className="video-carousel__video"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <img
+            src={
+              banners[currentIndex]?.image 
+            }
+            alt={`Banner ${currentIndex + 1}`}
+            className="video-carousel__image"
+          />
+        )
       ) : (
-        <img
-          src={
-            fallbackImages[currentIndex] ||
-            process.env.PUBLIC_URL + "/images/placeholder.jpg"
-          }
-          alt={`Slide ${currentIndex + 1}`}
-          className="video-carousel__image"
-        />
+        <p>Loading...</p> // Show a loading message while banners are being fetched
       )}
+
       <div className="video-carousel__controls">
         <button
           onClick={prevItem}
           className="video-carousel__control video-carousel__control--prev"
           aria-label="Previous item"
+          disabled={banners.length === 0} // Disable button when banners are loading
         >
           ❮
         </button>
@@ -92,50 +112,13 @@ function VideoCarousel() {
           onClick={nextItem}
           className="video-carousel__control video-carousel__control--next"
           aria-label="Next item"
+          disabled={banners.length === 0} // Disable button when banners are loading
         >
           ❯
         </button>
       </div>
     </div>
   );
-}
+};
 
 export default VideoCarousel;
-// const bannerImage =
-//   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/abibbasBanner-dPiTt6UDS7BEiWawtLcXIm4xlklVzO.png";
-
-// function BannerCarousel() {
-//   return (
-//     <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
-//       <img
-//         src={bannerImage || "/placeholder.svg"}
-//         alt="ABIBAS Motors Republic Day Banner - Rev up your life"
-//         className="w-full h-auto object-cover"
-//         style={{
-//           width: "100%",
-//           maxHeight: "500px",
-//           minHeight: "300px",
-//         }}
-//       />
-//       {/* Commenting out video and controls since we only need the banner image
-//       {/* <div className="video-carousel__controls">
-//         <button
-//           onClick={prevItem}
-//           className="video-carousel__control video-carousel__control--prev"
-//           aria-label="Previous item"
-//         >
-//           ❮
-//         </button>
-//         <button
-//           onClick={nextItem}
-//           className="video-carousel__control video-carousel__control--next"
-//           aria-label="Next item"
-//         >
-//           ❯
-//         </button>
-//       </div> */}
-//     </div>
-//   );
-// }
-
-// export default BannerCarousel;

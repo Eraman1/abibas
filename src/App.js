@@ -27,6 +27,7 @@ function App() {
         <Route path="term&Condition" element={<TermAndCondition />} />
         <Route path="privacyPolicy" element={<PrivacyPolicy />} />
         <Route path="model" element={<Model />} />
+        <Route path="blog" element={<Home />} />
       </Routes>
     </>
   );

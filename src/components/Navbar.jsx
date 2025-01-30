@@ -1,131 +1,126 @@
-import { Link } from "react-router-dom";
-import Logo from "../images/logo/abibas.jpg";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
+import Logo from "../images/logo/abibas.jpg"
+import { useEffect, useState } from "react"
+import axiosInstance from "../api/axios"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function Navbar() {
-  const [nav, setNav] = useState(false); // For mobile nav
-  const [modal, setModal] = useState(false); // For modal
-  const [dropdown, setDropdown] = useState(false); // For dropdown menu
+  const [nav, setNav] = useState(false)
+  const [modal, setModal] = useState(false)
+  const [dropdown, setDropdown] = useState(false)
 
-  // Form states
   const [form, setForm] = useState({
     name: "",
-    lastName: "",
-    phone: "",
-    age: "",
     email: "",
+    contactNumber: "",
+    age: "",
+    educationalQualification: "",
+    presentBusiness: "",
     address: "",
-    city: "",
-    zipcode: "",
-  });
+    yearsInBusiness: "",
+    turnover: "",
+    investmentCapacity: "",
+    comments: "",
+    termsAccepted: false,
+  })
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
+    const { name, value, type, checked } = e.target
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: type === "checkbox" ? checked : value,
+    }))
+  }
 
-  const toggleNav = () => setNav(!nav);
-  const toggleModal = () => setModal(!modal);
-  const toggleDropdown = () => setDropdown(!dropdown);
+  const toggleNav = () => setNav(!nav)
+  const toggleModal = () => setModal(!modal)
+  const toggleDropdown = () => setDropdown(!dropdown)
 
   useEffect(() => {
-    document.body.style.overflow = modal ? "hidden" : "auto";
-  }, [modal]);
+    document.body.style.overflow = modal ? "hidden" : "auto"
+  }, [modal])
 
-  const confirmBooking = (e) => {
-    e.preventDefault();
-    setModal(false);
-    alert("Booking confirmed!");
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await axiosInstance.post("/applicant/create", form)
+      setModal(false)
+      toast.success("Application submitted successfully!")
+    } catch (error) {
+      console.error("Error submitting application:", error)
+      toast.error("Error submitting application. Please try again.")
+    }
+  }
 
   return (
     <>
-      {/* Modal Overlay */}
-      <div
-        onClick={toggleModal}
-        className={`modal-overlay ${modal ? "active-modal" : ""}`}
-      ></div>
 
-      <nav>
-        {/* Mobile Navbar */}
-        <div className={`mobile-navbar ${nav ? "open-nav" : ""}`}>
-          <div onClick={toggleNav} className="mobile-navbar__close">
-            <i className="fa-solid fa-xmark"></i>
-          </div>
-          <ul className="mobile-navbar__links">
-            <li>
-              <Link onClick={toggleNav} to="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link onClick={toggleNav} to="/about">
-                About
-              </Link>
-            </li>
-            {/* Dropdown */}
-            <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-              <span className="dropdown-title">Vehicle Models</span>
-              {dropdown && (
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link onClick={toggleNav} to="/models">
-                      V-PASEO
-                    </Link>
-                  </li>
-                  <li>
-                    <Link onClick={toggleNav} to="/models">
-                      RIXEN
-                    </Link>
-                  </li>
-                  <li>
-                    <Link onClick={toggleNav} to="/models">
-                      RORSHIP
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-            {/* <li>
-              <Link onClick={toggleNav} to="/testimonials">
-                Testimonials
-              </Link>
-            </li> */}
-            {/* <li>
-              <Link onClick={toggleNav} to="/team">
-                Join Our Team
-              </Link>
-            </li> */}
-            <li>
-              <Link onClick={toggleNav} to="/blog">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link onClick={toggleNav} to="/contact">
-                Contact
-              </Link>
-            </li>
-          </ul>
-          <div className="navbar__buttons">
-            <Link
-              onClick={toggleModal}
-              className="navbar__buttons__sign-in"
-              to="/"
-            >
-              Dealership
-            </Link>
-            <Link className="navbar__buttons__register" to="/">
-              Book Now
-            </Link>
-          </div>
+      {/* Mobile Navbar */}
+      <div className={`mobile-navbar ${nav ? "open-nav" : ""}`}>
+        <div onClick={toggleNav} className="mobile-navbar__close">
+          <i className="fa-solid fa-xmark"></i>
         </div>
+        <ul className="mobile-navbar__links">
+          <li>
+            <Link onClick={toggleNav} to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link onClick={toggleNav} to="/about">
+              About
+            </Link>
+          </li>
+          <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+            <span className="dropdown-title">Vehicle Models</span>
+            {dropdown && (
+              <ul className="dropdown-menu">
+                <li>
+                  <Link onClick={toggleNav} to="/models">
+                    V-PASEO
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={toggleNav} to="/models">
+                    RIXEN
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={toggleNav} to="/models">
+                    RORSHIP
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li>
+            <Link onClick={toggleNav} to="/blog">
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link onClick={toggleNav} to="/contact">
+              Contact
+            </Link>
+          </li>
+        </ul>
+        <div className="navbar__buttons">
+          <Link onClick={toggleModal} className="navbar__buttons__sign-in" to="/">
+            Dealership
+          </Link>
+          <Link className="navbar__buttons__register" to="/">
+            Book Now
+          </Link>
+        </div>
+      </div>
 
-        {/* Desktop Navbar */}
+      {/* Desktop Navbar */}
+      <nav>
         <div className="navbar" style={{ position: "fixed" }}>
           <div className="navbar__img">
             <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-              <img src={Logo} alt="logo-img" />
+              <img src={Logo || "/placeholder.svg"} alt="logo-img" />
             </Link>
           </div>
           <ul className="navbar__links">
@@ -135,11 +130,7 @@ function Navbar() {
             <li>
               <Link to="/about">About</Link>
             </li>
-            <li
-              className="dropdown"
-              onMouseEnter={toggleDropdown}
-              onMouseLeave={toggleDropdown}
-            >
+            <li className="dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
               <span className="dropdown-title">Vehicle Models</span>
               {dropdown && (
                 <ul className="dropdown-menu">
@@ -155,12 +146,6 @@ function Navbar() {
                 </ul>
               )}
             </li>
-            {/* <li>
-              <Link to="/testimonials">Testimonials</Link>
-            </li> */}
-            {/* <li>
-              <Link to="/team">Join Our Team</Link>
-            </li> */}
             <li>
               <Link to="/blog">Blog</Link>
             </li>
@@ -169,11 +154,7 @@ function Navbar() {
             </li>
           </ul>
           <div className="navbar__buttons">
-            <Link
-              onClick={toggleModal}
-              className="navbar__buttons__sign-in"
-              to="/"
-            >
+            <Link onClick={toggleModal} className="navbar__buttons__sign-in" to="/">
               Dealership
             </Link>
             <Link className="navbar__buttons__register" to="/">
@@ -191,10 +172,10 @@ function Navbar() {
       {/* Modal */}
       <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
         <div className="booking-modal__title">
-          <h2>Complete Reservation</h2>
+          <h2>Dealership Application</h2>
           <i onClick={toggleModal} className="fa-solid fa-xmark"></i>
         </div>
-        <form className="info-form" onSubmit={confirmBooking}>
+        <form className="info-form" onSubmit={handleSubmit}>
           <div className="info-form__2col">
             <span>
               <label>
@@ -215,7 +196,7 @@ function Navbar() {
               </label>
               <input
                 name="email"
-                value={form.lastName}
+                value={form.email}
                 onChange={handleInputChange}
                 type="email"
                 placeholder="Enter your email"
@@ -229,8 +210,8 @@ function Navbar() {
                 Applicant's Contact Number <b>*</b>
               </label>
               <input
-                name="phone"
-                value={form.phone}
+                name="contactNumber"
+                value={form.contactNumber}
                 onChange={handleInputChange}
                 type="tel"
                 placeholder="Enter your contact number"
@@ -248,6 +229,7 @@ function Navbar() {
                 type="number"
                 placeholder="18"
                 required
+                min="18"
               />
             </span>
           </div>
@@ -257,8 +239,8 @@ function Navbar() {
                 Applicant's Educational Qualification <b>*</b>
               </label>
               <input
-                name="qualification"
-                value={form.email}
+                name="educationalQualification"
+                value={form.educationalQualification}
                 onChange={handleInputChange}
                 type="text"
                 placeholder="Enter your Qualification"
@@ -270,10 +252,10 @@ function Navbar() {
                 Present Business <b>*</b>
               </label>
               <input
-                name="business"
-                value={form.email}
+                name="presentBusiness"
+                value={form.presentBusiness}
                 onChange={handleInputChange}
-                type="email"
+                type="text"
                 placeholder="Enter your present business"
                 required
               />
@@ -300,19 +282,21 @@ function Navbar() {
                 No. of Years in Business <b>*</b>
               </label>
               <input
-                name="years"
-                value={form.city}
+                name="yearsInBusiness"
+                value={form.yearsInBusiness}
                 onChange={handleInputChange}
-                type="text"
+                type="number"
                 placeholder="Enter years"
                 required
               />
             </span>
             <span>
-              <label>Your Turnover</label>
+              <label>
+                Your Turnover <b>*</b>
+              </label>
               <input
                 name="turnover"
-                value={form.zipcode}
+                value={form.turnover}
                 onChange={handleInputChange}
                 type="text"
                 placeholder="Enter your turnover"
@@ -324,8 +308,8 @@ function Navbar() {
                 Investment Capacity <b>*</b>
               </label>
               <input
-                name="investment"
-                value={form.zipcode}
+                name="investmentCapacity"
+                value={form.investmentCapacity}
                 onChange={handleInputChange}
                 type="text"
                 placeholder="Enter investment capacity"
@@ -335,26 +319,38 @@ function Navbar() {
           </div>
           <div className="info-form__1col">
             <span>
-              <label>
-                Please leave any comments or suggestions below.<b>*</b>
-              </label>
-              <input
-                name="answer"
-                value={form.address}
+              <label>Comments or suggestions</label>
+              <textarea
+                name="comments"
+                value={form.comments}
                 onChange={handleInputChange}
-                type="text"
-                placeholder="Enter your street address"
-                required
+                placeholder="Enter any comments or suggestions"
+                rows="4"
               />
             </span>
           </div>
+          <div className="info-form__checkbox">
+            <input
+              type="checkbox"
+              name="termsAccepted"
+              checked={form.termsAccepted}
+              onChange={handleInputChange}
+              required
+            />
+            <label>
+              I accept the terms and conditions <b>*</b>
+            </label>
+          </div>
           <div className="reserve-button">
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={!form.termsAccepted}>
+              Submit Application
+            </button>
           </div>
         </form>
       </div>
     </>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar
+

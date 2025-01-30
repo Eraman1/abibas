@@ -1,6 +1,5 @@
-import SelectCar from "../images/plan/icon1.png";
-import Contact from "../images/plan/icon2.png";
-import Drive from "../images/plan/icon3.png";
+import { FaShieldAlt, FaCogs } from 'react-icons/fa';
+import { GrTechnology } from "react-icons/gr";
 
 function PlanTrip() {
   return (
@@ -18,7 +17,7 @@ function PlanTrip() {
 
             <div className="plan-container__boxes">
               <div className="plan-container__boxes__box">
-                <img src={SelectCar} alt="icon_img" />
+                <FaShieldAlt style={{ fontSize: '50px', color: '#00bcd4' }} />
                 <h3>SAFETY</h3>
                 <p>
                   Committed to ensuring safe, reliable, and secure mobility
@@ -27,7 +26,7 @@ function PlanTrip() {
               </div>
 
               <div className="plan-container__boxes__box">
-                <img src={Contact} alt="icon_img" />
+                <FaCogs style={{ fontSize: '50px', color: '#00bcd4' }} />
                 <h3>QUALITY</h3>
                 <p>
                   Delivering exceptional quality through innovative and
@@ -36,7 +35,7 @@ function PlanTrip() {
               </div>
 
               <div className="plan-container__boxes__box">
-                <img src={Drive} alt="icon_img" />
+                <GrTechnology style={{ fontSize: '50px', color: '#00bcd4' }} />
                 <h3>ADVANCE TECHNOGY</h3>
                 <p>
                   Leveraging advanced technology to drive smarter, sustainable
@@ -44,7 +43,7 @@ function PlanTrip() {
                 </p>
               </div>
               <div className="plan-container__boxes__box">
-                <img src={Drive} alt="icon_img" />
+                <FaShieldAlt style={{ fontSize: '50px', color: '#00bcd4' }} />
                 <h3>BEST SERVICE</h3>
                 <p>
                   Providing unparalleled service for a seamless mobility

@@ -13,7 +13,11 @@ import BackToTop from "../components/BackToTop";
 import WhatsAppButton from "../components/WhatsAppButton";
 import BannerCarousel from "../components/VideoCarousal";
 
+
+
+
 function Home() {
+  
   return (
     <>
       {/* <BannerCarousel /> */}
