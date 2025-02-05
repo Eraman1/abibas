@@ -198,7 +198,7 @@ function Models() {
                     </div>
                     <div className="models-div__box__descr__name-price__price">
                       <h4>₹1,59,000/-</h4>
-                      <p>pStarting Price</p>
+                      <p>Starting Price</p>
                     </div>
                   </div>
                   <div className="models-div__box__descr__name-price__details">

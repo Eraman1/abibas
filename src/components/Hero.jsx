@@ -37,10 +37,28 @@ function Hero() {
           <img className="bg-shape" src={BgShape} alt="bg-shape" />
           <div className="hero-content">
             <div className="hero-content__text">
-              <h4>Plan your trip now</h4>
-              <h1>
-                Save <span>big</span> with our car rental
-              </h1>
+              <h1>V-Parso</h1>
+              <h4>
+                ₹1,59,000/-{" "}
+                <span>
+                  <p>Starting Price</p>
+                </span>
+              </h4>
+              <p>
+                <span>
+                  <i className="fa-solid fa-gauge-simple-high"></i> &nbsp; Speed
+                  &nbsp;
+                </span>
+                <span>80km/h</span>
+              </p>
+              <p>
+                <span>
+                  <i className="fa-sharp-duotone fa-solid fa-road"></i> &nbsp;
+                  Range &nbsp;
+                </span>
+                <span>150-170km</span>
+              </p>
+
               <p>
                 Rent the car of your dreams. Unbeatable prices, unlimited miles,
                 flexible pick-up options and much more.
@@ -53,9 +71,9 @@ function Hero() {
                 >
                   Book Ride &nbsp; <i className="fa-solid fa-circle-check"></i>
                 </Link>
-                <Link className="hero-content__text__btns__learn-more" to="/">
+                {/* <Link className="hero-content__text__btns__learn-more" to="/">
                   Learn More &nbsp; <i className="fa-solid fa-angle-right"></i>
-                </Link>
+                </Link> */}
               </div>
             </div>
 
