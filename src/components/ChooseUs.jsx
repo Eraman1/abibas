@@ -1,35 +1,44 @@
-import { FaBatteryFull, FaLeaf, FaRegCheckCircle, FaDollarSign } from "react-icons/fa"
-import { AiFillSetting } from "react-icons/ai"
-import { MdDesignServices } from "react-icons/md"
-import { BiMap, BiSupport } from "react-icons/bi"
-import { GiMedal } from "react-icons/gi"
+import {
+  FaBatteryFull,
+  FaLeaf,
+  FaRegCheckCircle,
+  FaDollarSign,
+} from "react-icons/fa";
+import { AiFillSetting } from "react-icons/ai";
+import { MdDesignServices } from "react-icons/md";
+import { BiMap, BiSupport } from "react-icons/bi";
+import { GiMedal } from "react-icons/gi";
 
 function ChooseUs() {
   const iconStyle = {
     color: "#00bcd4",
-    fontSize: "50px",
-    marginRight: "20px",
+    fontSize: "40px",
+    marginRight: "15px",
     flexShrink: 0,
-  }
+  };
 
   const boxStyle = {
     display: "flex",
     alignItems: "flex-start",
-    marginBottom: "30px",
-  }
+    gap: "15px",
+    padding: "15px",
+    backgroundColor: "#f9f9f9",
+    borderRadius: "10px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+  };
 
   const textStyle = {
     flex: 1,
-  }
+  };
 
   const gridStyle = {
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gap: "30px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "20px",
     maxWidth: "1200px",
     margin: "0 auto",
     padding: "0 15px",
-  }
+  };
 
   const items = [
     {
@@ -77,11 +86,18 @@ function ChooseUs() {
       title: "Join the EV Revolution",
       text: "By choosing us, you're not just buying a scooter—you're joining a movement toward a cleaner, greener future. Together, we can revolutionize urban mobility.",
     },
-  ]
+  ];
 
   return (
-    <section className="choose-section" style={{ padding: "50px 0" }}>
-      <h2 style={{ color: "#000000", textAlign: "center", marginBottom: "40px" }}>
+    <section className="choose-section" style={{ padding: "40px 0" }}>
+      <h2
+        style={{
+          color: "#000",
+          textAlign: "center",
+          marginBottom: "30px",
+          fontSize: "28px",
+        }}
+      >
         Why Choose Us for Your EV Scooter Needs?
       </h2>
       <div style={gridStyle}>
@@ -89,15 +105,24 @@ function ChooseUs() {
           <div key={index} style={boxStyle}>
             <Icon style={iconStyle} />
             <div style={textStyle}>
-              <h4 style={{ color: "#00bcd4", marginBottom: "10px", fontSize: "18px" }}>{title}</h4>
-              <p style={{ fontSize: "14px", lineHeight: "1.6" }}>{text}</p>
+              <h4
+                style={{
+                  color: "#00bcd4",
+                  marginBottom: "8px",
+                  fontSize: "18px",
+                }}
+              >
+                {title}
+              </h4>
+              <p style={{ fontSize: "14px", lineHeight: "1.6", color: "#555" }}>
+                {text}
+              </p>
             </div>
           </div>
         ))}
       </div>
     </section>
-  )
+  );
 }
 
-export default ChooseUs
-
+export default ChooseUs;
