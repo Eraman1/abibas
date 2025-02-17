@@ -11,7 +11,11 @@ import Contact from "./Pages/Contact";
 import Refund from "./Pages/Refund";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Model from "./Pages/model";
-import VehicleModels from "./Pages/VehicleModels";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
+import Banner from "./components/Banner";
+
 
 
 function App() {
@@ -32,6 +36,10 @@ function App() {
         <Route path="blog" element={<Home />} />
 
       </Routes>
+      <Banner />
+      <Footer />
+      <BackToTop />
+      <WhatsAppButton />
     </>
   );
 }
