@@ -108,8 +108,8 @@
 /* === CAROUSEL STYLING === */
 .carousel {
   position: relative;
-  width: 60rem;
-  height: 45rem;
+  width: 70rem;
+  height: 55rem;
   overflow: hidden;
   display: flex;
   justify-content: center;
