@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Hero from "../components/Hero";
-import SpecificationsTabs from "../components/Specification";
-import PerformanceSection from "../components/Performance";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../api/axios";
-import Banner from "../components/Banner";
 import { FaChargingStation } from "react-icons/fa";
 import { FaCompactDisc } from "react-icons/fa6";
 import { TbWheel } from "react-icons/tb";
@@ -14,130 +10,123 @@ import HeroCar1 from "../images/cars-big/rorship.png";
 import HeroCar2 from "../images/cars-big/rixen2.png";
 import HeroCar3 from "../images/cars-big/rixen3.png";
 import { Link } from "react-router-dom";
+import "../styles/Hero.css"; // Ensure you link your CSS file
 
 export default function Model() {
- const { id } = useParams();
- console.log(id);
+  const { id } = useParams();
+  console.log(id);
 
- const [vehicles, setVehicles] = useState();
- const [currentIndex, setCurrentIndex] = useState(0);
+  const [vehicles, setVehicles] = useState();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
- const tabs = [
-   "Engine and Transmission",
-   "Dimensions and Capacity",
-   "Electricals",
-   "Tyres and Brakes",
- ];
+  const tabs = [
+    "Engine and Transmission",
+    "Dimensions and Capacity",
+    "Electricals",
+    "Tyres and Brakes",
+  ];
 
- const [activeTab, setActiveTab] = useState(tabs[0]); // Moved this above any returns
+  const [activeTab, setActiveTab] = useState(tabs[0]); // Moved this above any returns
 
- const images = [HeroCar1, HeroCar2, HeroCar3];
+  const images = [HeroCar1, HeroCar2, HeroCar3];
 
- useEffect(() => {
-   if (id) fetchVehicle();
+  useEffect(() => {
+    if (id) fetchVehicle();
 
-   // Auto-slide for hero section
-   const autoSlide = setInterval(() => {
-     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-   }, 3000);
+    //Auto-slide for hero section
+    const autoSlide = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
 
-   return () => clearInterval(autoSlide);
- }, [id]);
+    return () => clearInterval(autoSlide);
+  }, [id]);
 
- const fetchVehicle = async () => {
-   try {
-     const response = await axiosInstance.get(`/vehicles/${id}`);
-     setVehicles(response.data);
-   } catch (error) {
-     console.error("Error fetching vehicle:", error);
-   }
- };
+  const fetchVehicle = async () => {
+    try {
+      const response = await axiosInstance.get(`/vehicles/${id}`);
+      setVehicles(response.data);
+    } catch (error) {
+      console.error("Error fetching vehicle:", error);
+    }
+  };
 
- console.log(vehicles);
+  console.log(vehicles);
 
- if (!vehicles) return <p>Loading...</p>;
+  if (!vehicles) return <p>Loading...</p>;
 
- const nextSlide = () => {
-   setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
- };
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
- const prevSlide = () => {
-   setCurrentIndex(
-     (prevIndex) => (prevIndex - 1 + images.length) % images.length
-   );
- };
+  const prevSlide = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
 
- const bookBtn = () => {
-   document
-     .querySelector("#booking-section")
-     .scrollIntoView({ behavior: "smooth" });
- };
+  const bookBtn = () => {
+    document
+      .querySelector("#booking-section")
+      .scrollIntoView({ behavior: "smooth" });
+  };
 
- // Specifications object remains unchanged
- const specifications = {
-   "Engine and Transmission": [
-     { label: "Motor Type", value: "Brushless DC Hub Motor" },
-     { label: "Motor Power", value: "2300W*" },
-     { label: "Range", value: "UP TO 100 Kms" },
-     { label: "Start", value: "Self Start only" },
-     { label: "Transmission", value: "Automatic" },
-     { label: "Reverse Gear", value: "Yes" },
-   ],
-   "Dimensions and Capacity": [
-     { label: "Length", value: "1820 mm" },
-     { label: "Width", value: "680 mm" },
-     { label: "Height", value: "1120 mm" },
-     { label: "Seat Height", value: "760 mm" },
-   ],
-   Electricals: [
-     { label: "Battery Type", value: "Lithium-Ion" },
-     { label: "Charging Time", value: "4-5 Hours" },
-     { label: "Headlight", value: "LED" },
-   ],
-   "Tyres and Brakes": [
-     { label: "Front Brake", value: "Disc" },
-     { label: "Rear Brake", value: "Drum" },
-     { label: "Tyre Type", value: "Tubeless" },
-   ],
- };
+  // Specifications object remains unchanged
+  const specifications = {
+    "Engine and Transmission": [
+      { label: "Motor Type", value: "Brushless DC Hub Motor" },
+      { label: "Motor Power", value: "2300W*" },
+      { label: "Range", value: "UP TO 100 Kms" },
+      { label: "Start", value: "Self Start only" },
+      { label: "Transmission", value: "Automatic" },
+      { label: "Reverse Gear", value: "Yes" },
+    ],
+    "Dimensions and Capacity": [
+      { label: "Length", value: "1820 mm" },
+      { label: "Width", value: "680 mm" },
+      { label: "Height", value: "1120 mm" },
+      { label: "Seat Height", value: "760 mm" },
+    ],
+    Electricals: [
+      { label: "Battery Type", value: "Lithium-Ion" },
+      { label: "Charging Time", value: "4-5 Hours" },
+      { label: "Headlight", value: "LED" },
+    ],
+    "Tyres and Brakes": [
+      { label: "Front Brake", value: "Disc" },
+      { label: "Rear Brake", value: "Drum" },
+      { label: "Tyre Type", value: "Tubeless" },
+    ],
+  };
 
   return (
     <>
       {/* hero section */}
       <section id="home" className="hero-section">
-        <div className="container">
-          <img className="bg-shape" src={BgShape} alt="bg-shape" />
+        <div className="hero-container">
+          <img className="bg-shape" src={BgShape} alt="background-shape" />
           <div className="hero-content">
-            <div className="hero-content__text">
-              <h1>V-Parso</h1>
-              <h4>
+            <div className="hero-text">
+              <h1 className="hero-title">V-Parso</h1>
+              <h4 className="hero-price">
                 ₹1,59,000/-{" "}
-                <span>
-                  <p>Starting Price</p>
-                </span>
+                <span className="starting-price">Starting Price</span>
               </h4>
-              <p>
-                <span>
-                  <i className="fa-solid fa-gauge-simple-high"></i> Speed{" "}
-                </span>
-                <span>80km/h</span>
-              </p>
-              <p>
-                <span>
-                  <i className="fa-solid fa-road"></i> Range{" "}
-                </span>
-                <span>150-170km</span>
-              </p>
-              <p>
+              <div className="hero-details">
+                <p>
+                  <i className="fa-solid fa-gauge-simple-high"></i> Speed:{" "}
+                  <span>80km/h</span>
+                </p>
+                <p>
+                  <i className="fa-solid fa-road"></i> Range:{" "}
+                  <span>150-170km</span>
+                </p>
+              </div>
+              <p className="hero-desc">
                 Rent the car of your dreams. Unbeatable prices, unlimited miles,
                 flexible pick-up options and much more.
               </p>
-              <div className="hero-content__text__btns">
-                <Link
-                  onClick={bookBtn}
-                  className="hero-content__text__btns__book-ride"
-                  to="/"
-                >
+              <div className="hero-buttons">
+                <Link onClick={bookBtn} className="book-btn" to="/">
                   Book Ride <i className="fa-solid fa-circle-check"></i>
                 </Link>
               </div>
@@ -147,11 +136,13 @@ export default function Model() {
               <button className="carousel-btn prev" onClick={prevSlide}>
                 &#10094;
               </button>
-              <img
-                src={images[currentIndex]}
-                alt="car-img"
-                className="carousel-img"
-              />
+              <div className="carousel-slide">
+                <img
+                  src={images[currentIndex]}
+                  alt="car-img"
+                  className="carousel-img"
+                />
+              </div>
               <button className="carousel-btn next" onClick={nextSlide}>
                 &#10095;
               </button>
@@ -160,6 +151,7 @@ export default function Model() {
         </div>
       </section>
 
+      {/* specification */}
       <div className="spec-container">
         {/* Tabs */}
         <div className="spec-tabs">

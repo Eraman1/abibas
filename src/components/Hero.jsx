@@ -4,6 +4,7 @@ import BgShape from "../images/hero/hero-bg.png";
 import HeroCar1 from "../images/cars-big/rorship.png";
 import HeroCar2 from "../images/cars-big/rixen2.png";
 import HeroCar3 from "../images/cars-big/rixen3.png";
+import "../styles/Hero.css"; // Ensure you link your CSS file
 
 function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,7 +21,7 @@ function Hero() {
   };
 
   useEffect(() => {
-    const autoSlide = setInterval(nextSlide, 3000);
+    const autoSlide = setInterval(nextSlide, 4000);
     return () => clearInterval(autoSlide);
   }, []);
 
@@ -31,63 +32,54 @@ function Hero() {
   };
 
   return (
-    <>
-      <section id="home" className="hero-section">
-        <div className="container">
-          <img className="bg-shape" src={BgShape} alt="bg-shape" />
-          <div className="hero-content">
-            <div className="hero-content__text">
-              <h1>V-Parso</h1>
-              <h4>
-                ₹1,59,000/-{" "}
-                <span>
-                  <p>Starting Price</p>
-                </span>
-              </h4>
+    <section id="home" className="hero-section">
+      <div className="hero-container">
+        <img className="bg-shape" src={BgShape} alt="background-shape" />
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1 className="hero-title">V-Parso</h1>
+            <h4 className="hero-price">
+              ₹1,59,000/- <span className="starting-price">Starting Price</span>
+            </h4>
+            <div className="hero-details">
               <p>
-                <span>
-                  <i className="fa-solid fa-gauge-simple-high"></i> Speed{" "}
-                </span>
+                <i className="fa-solid fa-gauge-simple-high"></i> Speed:{" "}
                 <span>80km/h</span>
               </p>
               <p>
-                <span>
-                  <i className="fa-solid fa-road"></i> Range{" "}
-                </span>
+                <i className="fa-solid fa-road"></i> Range:{" "}
                 <span>150-170km</span>
               </p>
-              <p>
-                Rent the car of your dreams. Unbeatable prices, unlimited miles,
-                flexible pick-up options and much more.
-              </p>
-              <div className="hero-content__text__btns">
-                <Link
-                  onClick={bookBtn}
-                  className="hero-content__text__btns__book-ride"
-                  to="/"
-                >
-                  Book Ride <i className="fa-solid fa-circle-check"></i>
-                </Link>
-              </div>
             </div>
+            <p className="hero-desc">
+              Rent the car of your dreams. Unbeatable prices, unlimited miles,
+              flexible pick-up options and much more.
+            </p>
+            <div className="hero-buttons">
+              <Link onClick={bookBtn} className="book-btn" to="/">
+                Book Ride <i className="fa-solid fa-circle-check"></i>
+              </Link>
+            </div>
+          </div>
 
-            <div className="carousel">
-              <button className="carousel-btn prev" onClick={prevSlide}>
-                &#10094;
-              </button>
+          <div className="carousel">
+            <button className="carousel-btn prev" onClick={prevSlide}>
+              &#10094;
+            </button>
+            <div className="carousel-slide">
               <img
                 src={images[currentIndex]}
                 alt="car-img"
                 className="carousel-img"
               />
-              <button className="carousel-btn next" onClick={nextSlide}>
-                &#10095;
-              </button>
             </div>
+            <button className="carousel-btn next" onClick={nextSlide}>
+              &#10095;
+            </button>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 
