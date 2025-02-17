@@ -76,9 +76,7 @@ function Contact() {
             </div>
           </div>
         </div>
-        <Footer />
-        <BackToTop />
-        <WhatsAppButton />
+       
       </section>
     </>
   );

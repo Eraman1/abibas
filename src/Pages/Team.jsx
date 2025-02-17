@@ -49,9 +49,7 @@ function Team() {
             </div>
           </div>
         </div>
-        <Footer />
-        <BackToTop />
-        <WhatsAppButton />
+        
       </section>
     </>
   );

@@ -73,9 +73,7 @@ function About() {
           </div>
         </div>
       </div>
-      <Footer />
-      <BackToTop />
-      <WhatsAppButton />
+     
     </>
   );
 }

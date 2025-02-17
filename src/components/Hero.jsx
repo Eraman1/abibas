@@ -87,45 +87,6 @@ function Hero() {
           </div>
         </div>
       </section>
-
-      <style>{`
-        .carousel {
-          position: relative;
-          max-width: 500px;
-          margin: auto;
-          z-index: 1000;
-        }
-
-        .carousel-img {
-          width: 100%;
-          border-radius: 10px;
-          transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-btn {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background-color: rgba(0, 0, 0, 0.5);
-          color: white;
-          border: none;
-          padding: 10px;
-          cursor: pointer;
-          font-size: 18px;
-        }
-
-        .carousel-btn.prev {
-          left: 10px;
-        }
-
-        .carousel-btn.next {
-          right: 10px;
-        }
-
-        .carousel-btn:hover {
-          background-color: rgba(0, 0, 0, 0.8);
-        }
-      `}</style>
     </>
   );
 }

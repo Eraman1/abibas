@@ -16,8 +16,6 @@ import BackToTop from "./components/BackToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Banner from "./components/Banner";
 
-
-
 function App() {
   return (
     <>
@@ -34,9 +32,7 @@ function App() {
         <Route path="privacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/model/:id" element={<Model />} />
         <Route path="blog" element={<Home />} />
-
       </Routes>
-      <Banner />
       <Footer />
       <BackToTop />
       <WhatsAppButton />

@@ -92,21 +92,13 @@ function Navbar() {
               About
             </Link>
           </li>
-          <li
-            onMouseEnter={() => toggleDropdown(true)}
-            onMouseLeave={() => toggleDropdown(false)}
-            className="relative"
-          >
-            <span className="dropdown-title cursor-pointer">
-              Vehicle Models
-            </span>
-
+          <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+            <span className="dropdown-title">Vehicle Models</span>
             {dropdown && (
-              <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50">
+              <ul className="dropdown-menu">
                 {vehicles.map((vehicle) => (
                   <li
                     key={vehicle._id}
-                    className="p-2 hover:bg-gray-200"
                     onClick={() => navigate(`/model/${vehicle._id}`)}
                   >
                     {vehicle.name}
@@ -156,19 +148,34 @@ function Navbar() {
             <li>
               <Link to="/about">About</Link>
             </li>
+
             <li
+              className="dropdown"
+              onMouseEnter={toggleDropdown}
+              onMouseLeave={toggleDropdown}
+            >
+              <span className="dropdown-title">Vehicle Models</span>
+              {dropdown && (
+                <ul className="dropdown-menu">
+                  {vehicles.map((vehicle) => (
+                    <li key={vehicle._id}>
+                      <Link to={`/model/${vehicle._id}`}>{vehicle.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+
+            {/* <li
               onMouseEnter={() => toggleDropdown(true)}
               onMouseLeave={() => toggleDropdown(false)}
-              className="relative"
             >
-              <span className="dropdown-title cursor-pointer">
-                Vehicle Models
-              </span>
+              <span className="dropdown-title">Vehicle Models</span>
 
               {dropdown && (
-                <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50">
+                <ul className="dropdown-menu">
                   {vehicles.map((vehicle) => (
-                    <li key={vehicle._id} className="p-2 hover:bg-gray-200">
+                    <li key={vehicle._id}>
                       <Link
                         to={`/model/${vehicle._id}`}
                         className="block w-full"
@@ -179,7 +186,7 @@ function Navbar() {
                   ))}
                 </ul>
               )}
-            </li>
+            </li> */}
 
             <li>
               <Link to="/blog">Blog</Link>

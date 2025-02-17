@@ -22,9 +22,7 @@ function TestimonialsPage() {
             </div>
           </div>
         </div>
-        <Footer />
-        <BackToTop />
-        <WhatsAppButton />
+       
       </section>
     </>
   );

@@ -467,9 +467,7 @@ export default function Refund() {
         </div>
       </section>
       <Banner />
-      <Footer />
-      <BackToTop />
-      <WhatsAppButton />
+      
     </>
   );
 }
