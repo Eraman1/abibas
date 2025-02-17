@@ -16,48 +16,90 @@ import HeroCar3 from "../images/cars-big/rixen3.png";
 import { Link } from "react-router-dom";
 
 export default function Model() {
-  // hero section
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const images = [HeroCar1, HeroCar2, HeroCar3];
+ const { id } = useParams();
+ console.log(id);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+ const [vehicles, setVehicles] = useState();
+ const [currentIndex, setCurrentIndex] = useState(0);
 
-  const prevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
-  };
+ const tabs = [
+   "Engine and Transmission",
+   "Dimensions and Capacity",
+   "Electricals",
+   "Tyres and Brakes",
+ ];
 
-  const bookBtn = () => {
-    document
-      .querySelector("#booking-section")
-      .scrollIntoView({ behavior: "smooth" });
-  };
-  // end hero section
-  const { id } = useParams();
-  console.log(id);
-  const [vehicles, setVehicles] = useState();
+ const [activeTab, setActiveTab] = useState(tabs[0]); // Moved this above any returns
 
-  useEffect(() => {
-    // for hero section bike carousal
-    const autoSlide = setInterval(nextSlide, 3000);
-    return () => clearInterval(autoSlide);
+ const images = [HeroCar1, HeroCar2, HeroCar3];
 
-    if (id) fetchVehicle();
-  }, [id]);
+ useEffect(() => {
+   if (id) fetchVehicle();
 
-  const fetchVehicle = async () => {
-    try {
-      const response = await axiosInstance.get(`/vehicles/${id}`);
-      setVehicles(response.data);
-    } catch (error) {
-      console.error("Error fetching vehicle:", error);
-    }
-  };
-  console.log(vehicles);
-  if (!vehicles) return <p>Loading...</p>;
+   // Auto-slide for hero section
+   const autoSlide = setInterval(() => {
+     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+   }, 3000);
+
+   return () => clearInterval(autoSlide);
+ }, [id]);
+
+ const fetchVehicle = async () => {
+   try {
+     const response = await axiosInstance.get(`/vehicles/${id}`);
+     setVehicles(response.data);
+   } catch (error) {
+     console.error("Error fetching vehicle:", error);
+   }
+ };
+
+ console.log(vehicles);
+
+ if (!vehicles) return <p>Loading...</p>;
+
+ const nextSlide = () => {
+   setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+ };
+
+ const prevSlide = () => {
+   setCurrentIndex(
+     (prevIndex) => (prevIndex - 1 + images.length) % images.length
+   );
+ };
+
+ const bookBtn = () => {
+   document
+     .querySelector("#booking-section")
+     .scrollIntoView({ behavior: "smooth" });
+ };
+
+ // Specifications object remains unchanged
+ const specifications = {
+   "Engine and Transmission": [
+     { label: "Motor Type", value: "Brushless DC Hub Motor" },
+     { label: "Motor Power", value: "2300W*" },
+     { label: "Range", value: "UP TO 100 Kms" },
+     { label: "Start", value: "Self Start only" },
+     { label: "Transmission", value: "Automatic" },
+     { label: "Reverse Gear", value: "Yes" },
+   ],
+   "Dimensions and Capacity": [
+     { label: "Length", value: "1820 mm" },
+     { label: "Width", value: "680 mm" },
+     { label: "Height", value: "1120 mm" },
+     { label: "Seat Height", value: "760 mm" },
+   ],
+   Electricals: [
+     { label: "Battery Type", value: "Lithium-Ion" },
+     { label: "Charging Time", value: "4-5 Hours" },
+     { label: "Headlight", value: "LED" },
+   ],
+   "Tyres and Brakes": [
+     { label: "Front Brake", value: "Disc" },
+     { label: "Rear Brake", value: "Drum" },
+     { label: "Tyre Type", value: "Tubeless" },
+   ],
+ };
 
   return (
     <>
@@ -117,7 +159,35 @@ export default function Model() {
           </div>
         </div>
       </section>
-      <SpecificationsTabs />
+
+      <div className="spec-container">
+        {/* Tabs */}
+        <div className="spec-tabs">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              className={`spec-tab ${activeTab === tab ? "active" : ""}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Content */}
+        <div className="spec-content">
+          <table className="spec-table">
+            <tbody>
+              {specifications[activeTab]?.map((item, index) => (
+                <tr key={index} className="spec-row">
+                  <td className="spec-label">{item.label}</td>
+                  <td className="spec-value">{item.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
       {/* performance */}
       <div className="performance-container">
         {/* Performance Metrics */}
