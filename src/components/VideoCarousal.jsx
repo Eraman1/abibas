@@ -58,7 +58,6 @@ const VideoCarousel = () => {
       };
 
       const handleError = () => {
-        console.error("Video failed to load:", banners[currentIndex]);
         setIsVideoSupported(false);
       };
 
@@ -88,9 +87,7 @@ const VideoCarousel = () => {
           />
         ) : (
           <img
-            src={
-              banners[currentIndex]?.image 
-            }
+            src={banners[currentIndex]?.image}
             alt={`Banner ${currentIndex + 1}`}
             className="video-carousel__image"
           />

@@ -18,7 +18,6 @@ function PickCar() {
           setColorBtn(`btn${response.data[0]._id}`)
         }
       } catch (error) {
-        console.error("Error fetching products:", error)
       }
     }
 

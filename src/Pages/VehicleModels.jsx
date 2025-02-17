@@ -5,12 +5,32 @@ import CarImg2 from "../images/cars-big/rixen2.png";
 import CarImg3 from "../images/cars-big/rorship.png";
 import CarImg4 from "../images/cars-big/vpaseo5.png";
 import CarImg5 from "../images/cars-big/rixen2.png";
-import CarImg6 from "../images/cars-big/rorship.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BackToTop from "../components/BackToTop";
 import WhatsAppButton from "../components/WhatsAppButton";
+import { useEffect, useState } from "react";
+import axiosInstance from "../api/axios";
 
-function Models() {
+function VehicleModels() {
+  const { id } = useParams();
+  console.log(id);
+  const [vehicles, setVehicles] = useState();
+
+  useEffect(() => {
+    if (id) fetchVehicle();
+  }, [id]);
+
+  const fetchVehicle = async () => {
+    try {
+      const response = await axiosInstance.get(`/vehicles/${id}`);
+      setVehicles(response.data);
+    } catch (error) {
+      console.error("Error fetching vehicle:", error);
+    }
+  };
+  console.log(vehicles);
+  if (!vehicles) return <p>Loading...</p>;
+
   return (
     <>
       <section className="models-section">
@@ -23,7 +43,7 @@ function Models() {
                 <div className="models-div__box__descr">
                   <div className="models-div__box__descr__name-price">
                     <div className="models-div__box__descr__name-price__name">
-                      <p>V-Perso</p>
+                      <p>{vehicles.name}</p>
                       <span>
                         <i className="fa-solid fa-star"></i>
                         <i className="fa-solid fa-star"></i>
@@ -284,4 +304,4 @@ function Models() {
   );
 }
 
-export default Models;
+export default VehicleModels;

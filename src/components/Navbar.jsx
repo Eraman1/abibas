@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../api/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
   const [modal, setModal] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [vehicles, setVehicles] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
@@ -39,8 +44,21 @@ function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = modal ? "hidden" : "auto";
+    fetchVehicles();
   }, [modal]);
 
+  const fetchVehicles = async () => {
+    setLoading(true); // Set loading to true before fetching data
+    try {
+      const response = await axiosInstance.get("/vehicles");
+      setVehicles(response.data || []); // Ensure response is an array
+    } catch (error) {
+      console.error("Error fetching vehicles:", error);
+      setVehicles([]); // Reset to empty array on error
+    } finally {
+      setLoading(false); // Set loading to false after fetch completes
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -53,6 +71,9 @@ function Navbar() {
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       {/* Mobile Navbar */}
@@ -71,28 +92,30 @@ function Navbar() {
               About
             </Link>
           </li>
-          <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-            <span className="dropdown-title">Vehicle Models</span>
+          <li
+            onMouseEnter={() => toggleDropdown(true)}
+            onMouseLeave={() => toggleDropdown(false)}
+            className="relative"
+          >
+            <span className="dropdown-title cursor-pointer">
+              Vehicle Models
+            </span>
+
             {dropdown && (
-              <ul className="dropdown-menu">
-                <li>
-                  <Link onClick={toggleNav} to="/model">
-                    V-PASEO
-                  </Link>
-                </li>
-                <li>
-                  <Link onClick={toggleNav} to="/model">
-                    RIXEN
-                  </Link>
-                </li>
-                <li>
-                  <Link onClick={toggleNav} to="/model">
-                    RORSHIP
-                  </Link>
-                </li>
+              <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50">
+                {vehicles.map((vehicle) => (
+                  <li
+                    key={vehicle._id}
+                    className="p-2 hover:bg-gray-200"
+                    onClick={() => navigate(`/model/${vehicle._id}`)}
+                  >
+                    {vehicle.name}
+                  </li>
+                ))}
               </ul>
             )}
           </li>
+
           <li>
             <Link onClick={toggleNav} to="/blog">
               Blog
@@ -134,25 +157,30 @@ function Navbar() {
               <Link to="/about">About</Link>
             </li>
             <li
-              className="dropdown"
-              onMouseEnter={toggleDropdown}
-              onMouseLeave={toggleDropdown}
+              onMouseEnter={() => toggleDropdown(true)}
+              onMouseLeave={() => toggleDropdown(false)}
+              className="relative"
             >
-              <span className="dropdown-title">Vehicle Models</span>
+              <span className="dropdown-title cursor-pointer">
+                Vehicle Models
+              </span>
+
               {dropdown && (
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link to="/model">V-PASEO</Link>
-                  </li>
-                  <li>
-                    <Link to="/model">RIXEN</Link>
-                  </li>
-                  <li>
-                    <Link to="/model">RORSHIP</Link>
-                  </li>
+                <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50">
+                  {vehicles.map((vehicle) => (
+                    <li key={vehicle._id} className="p-2 hover:bg-gray-200">
+                      <Link
+                        to={`/model/${vehicle._id}`}
+                        className="block w-full"
+                      >
+                        {vehicle.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               )}
             </li>
+
             <li>
               <Link to="/blog">Blog</Link>
             </li>

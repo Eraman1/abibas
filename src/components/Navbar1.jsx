@@ -6,6 +6,8 @@ function Navbar() {
   const [nav, setNav] = useState(false); // For mobile nav
   const [modal, setModal] = useState(false); // For modal
   const [dropdown, setDropdown] = useState(false); // For dropdown menu
+  const [vehicles, setVehicles] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // Form states
   const [form, setForm] = useState({
@@ -38,6 +40,21 @@ function Navbar() {
     alert("Booking confirmed!");
   };
 
+  const fetchVehicles = async () => {
+    setLoading(true); // Set loading to true before fetching data
+    try {
+      const response = await axiosInstance.get("/vehicles");
+      setVehicles(response.data || []); // Ensure response is an array
+    } catch (error) {
+      console.error("Error fetching vehicles:", error);
+      setVehicles([]); // Reset to empty array on error
+    } finally {
+      setLoading(false); // Set loading to false after fetch completes
+    }
+  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       {/* Modal Overlay */}
@@ -66,26 +83,19 @@ function Navbar() {
             {/* Dropdown */}
             <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
               <span className="dropdown-title">Vehicle Models</span>
-              {dropdown && (
+              {dropdown && ( // Ensure the dropdown is only rendered when it's active
                 <ul className="dropdown-menu">
-                  <li>
-                    <Link onClick={toggleNav} to="/models/scooter1">
-                      V-PASEO
-                    </Link>
-                  </li>
-                  <li>
-                    <Link onClick={toggleNav} to="/models/scooter2">
-                      RIXEN
-                    </Link>
-                  </li>
-                  <li>
-                    <Link onClick={toggleNav} to="/models/scooter3">
-                      RORSHIP
-                    </Link>
-                  </li>
+                  {vehicles.map((vehicle, index) => (
+                    <li key={index}>
+                      <Link onClick={toggleNav} to={`/model/${vehicle._id}`}>
+                        {vehicle.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               )}
             </li>
+
             <li>
               <Link onClick={toggleNav} to="/testimonials">
                 Testimonials
@@ -123,26 +133,21 @@ function Navbar() {
             <li>
               <Link to="/about">About</Link>
             </li>
-            <li
-              className="dropdown"
-              onMouseEnter={toggleDropdown}
-              onMouseLeave={toggleDropdown}
-            >
+            <li onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
               <span className="dropdown-title">Vehicle Models</span>
-              {dropdown && (
+              {dropdown && ( // Ensure the dropdown is only rendered when it's active
                 <ul className="dropdown-menu">
-                  <li>
-                    <Link to="/models">V-PASEO</Link>
-                  </li>
-                  <li>
-                    <Link to="/models">RIXEN</Link>
-                  </li>
-                  <li>
-                    <Link to="/models">RORSHIP</Link>
-                  </li>
+                  {vehicles.map((vehicle, index) => (
+                    <li key={index}>
+                      <Link onClick={toggleNav} to={`/model/${vehicle._id}`}>
+                        {vehicle.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               )}
             </li>
+
             <li>
               <Link to="/testimonials">Testimonials</Link>
             </li>

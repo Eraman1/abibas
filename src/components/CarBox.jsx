@@ -1,8 +1,7 @@
-import { useState } from "react"
+import { useState } from "react";
 
 function CarBox({ car }) {
-  const [carLoad, setCarLoad] = useState(true)
-  console.log(car)
+  const [carLoad, setCarLoad] = useState(true);
   return (
     <div className="box-cars">
       <div className="pick-car">
@@ -13,9 +12,9 @@ function CarBox({ car }) {
           alt={car.name}
           onLoad={() => setCarLoad(false)}
           onError={(e) => {
-            e.target.onerror = null
-            e.target.src = "/placeholder.svg"
-            setCarLoad(false)
+            e.target.onerror = null;
+            e.target.src = "/placeholder.svg";
+            setCarLoad(false);
           }}
         />
       </div>
@@ -78,8 +77,7 @@ function CarBox({ car }) {
         </a>
       </div>
     </div>
-  )
+  );
 }
 
-export default CarBox
-
+export default CarBox;

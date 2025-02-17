@@ -4,13 +4,15 @@ import Home from "./Pages/Home";
 import TermAndCondition from "./Pages/TermAndCondition";
 import Navbar from "../src/components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import Models from "./Pages/Models";
+import Models from "./Pages/VehicleModels";
 import TestimonialsPage from "./Pages/TestimonialsPage";
 import Team from "./Pages/Team";
 import Contact from "./Pages/Contact";
 import Refund from "./Pages/Refund";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Model from "./Pages/model";
+import VehicleModels from "./Pages/VehicleModels";
+
 
 function App() {
   return (
@@ -26,8 +28,9 @@ function App() {
         <Route path="refund" element={<Refund />} />
         <Route path="term&Condition" element={<TermAndCondition />} />
         <Route path="privacyPolicy" element={<PrivacyPolicy />} />
-        <Route path="model" element={<Model />} />
+        <Route path="/model/:id" element={<Model />} />
         <Route path="blog" element={<Home />} />
+
       </Routes>
     </>
   );
