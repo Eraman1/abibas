@@ -14,7 +14,6 @@ import "../styles/Hero.css"; // Ensure you link your CSS file
 
 export default function Model() {
   const { id } = useParams();
-  console.log(id);
 
   const [vehicles, setVehicles] = useState();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,12 +54,13 @@ export default function Model() {
   if (!vehicles) return <p>Loading...</p>;
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % vehicles.images.length);
   };
 
   const prevSlide = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) =>
+        (prevIndex - 1 + vehicles.images.length) % vehicles.images.length
     );
   };
 
@@ -69,32 +69,38 @@ export default function Model() {
       .querySelector("#booking-section")
       .scrollIntoView({ behavior: "smooth" });
   };
+  const { motorType, motorPower, range, start, transmission, reverseGear } =
+    vehicles.engineAndTransmission;
+  const { length, width, height, seatHeight } = vehicles.dimensionAndCapacity;
 
+  const { batteryType, headLight, chargingTime } = vehicles.electricals;
+
+  const { frontBrake, rearBrake, tyreType } = vehicles.tyresAndBrakes;
   // Specifications object remains unchanged
   const specifications = {
     "Engine and Transmission": [
-      { label: "Motor Type", value: "Brushless DC Hub Motor" },
-      { label: "Motor Power", value: "2300W*" },
-      { label: "Range", value: "UP TO 100 Kms" },
-      { label: "Start", value: "Self Start only" },
-      { label: "Transmission", value: "Automatic" },
-      { label: "Reverse Gear", value: "Yes" },
+      { label: "Motor Type", value: motorType },
+      { label: "Motor Power", value: motorPower },
+      { label: "Range", value: range },
+      { label: "Start", value: start },
+      { label: "Transmission", value: transmission },
+      { label: "Reverse Gear", value: reverseGear },
     ],
     "Dimensions and Capacity": [
-      { label: "Length", value: "1820 mm" },
-      { label: "Width", value: "680 mm" },
-      { label: "Height", value: "1120 mm" },
-      { label: "Seat Height", value: "760 mm" },
+      { label: "Length", value: length },
+      { label: "Width", value: width },
+      { label: "Height", value: height },
+      { label: "Seat Height", value: seatHeight },
     ],
     Electricals: [
-      { label: "Battery Type", value: "Lithium-Ion" },
-      { label: "Charging Time", value: "4-5 Hours" },
-      { label: "Headlight", value: "LED" },
+      { label: "Battery Type", value: batteryType },
+      { label: "Charging Time", value: headLight },
+      { label: "Headlight", value: chargingTime },
     ],
     "Tyres and Brakes": [
-      { label: "Front Brake", value: "Disc" },
-      { label: "Rear Brake", value: "Drum" },
-      { label: "Tyre Type", value: "Tubeless" },
+      { label: "Front Brake", value: frontBrake },
+      { label: "Rear Brake", value: rearBrake },
+      { label: "Tyre Type", value: tyreType },
     ],
   };
 
@@ -106,25 +112,22 @@ export default function Model() {
           <img className="bg-shape" src={BgShape} alt="background-shape" />
           <div className="hero-content">
             <div className="hero-text">
-              <h1 className="hero-title">V-Parso</h1>
+              <h1 className="hero-title">{vehicles.name}</h1>
               <h4 className="hero-price">
-                ₹1,59,000/-{" "}
+                ₹{vehicles.startingPrice}/-{" "}
                 <span className="starting-price">Starting Price</span>
               </h4>
               <div className="hero-details">
                 <p>
                   <i className="fa-solid fa-gauge-simple-high"></i> Speed:{" "}
-                  <span>80km/h</span>
+                  <span>{vehicles.speed}</span>
                 </p>
                 <p>
                   <i className="fa-solid fa-road"></i> Range:{" "}
-                  <span>150-170km</span>
+                  <span>{vehicles.range}</span>
                 </p>
               </div>
-              <p className="hero-desc">
-                Rent the car of your dreams. Unbeatable prices, unlimited miles,
-                flexible pick-up options and much more.
-              </p>
+              <p className="hero-desc">{vehicles.description}</p>
               <div className="hero-buttons">
                 <Link onClick={bookBtn} className="book-btn" to="/">
                   Book Ride <i className="fa-solid fa-circle-check"></i>
@@ -136,13 +139,15 @@ export default function Model() {
               <button className="carousel-btn prev" onClick={prevSlide}>
                 &#10094;
               </button>
-              <div className="carousel-slide">
-                <img
-                  src={images[currentIndex]}
-                  alt="car-img"
-                  className="carousel-img"
-                />
-              </div>
+              {vehicles.images.length > 0 && (
+                <div className="carousel-slide">
+                  <img
+                    src={vehicles.images[currentIndex] || vehicles.images[0]} // Fallback to first image
+                    alt="car-img"
+                    className="carousel-img"
+                  />
+                </div>
+              )}
               <button className="carousel-btn next" onClick={nextSlide}>
                 &#10095;
               </button>
@@ -187,21 +192,21 @@ export default function Model() {
         <div className="performance-metrics">
           <div className="metric">
             <span className="metric-value">
-              <i>30,000</i> <small>Kms</small>
+              <i>{vehicles.performance.motorWarranty}</i> <small>Kms</small>
             </span>
             <p>Motor Warranty</p>
           </div>
           <div className="divider"></div>
           <div className="metric">
             <span className="metric-value">
-              <i>3</i> <small>Years</small>
+              <i>{vehicles.performance.batteryWarranty}</i>
             </span>
             <p>Battery Warranty</p>
           </div>
           <div className="divider"></div>
           <div className="metric">
             <span className="metric-value">
-              <i>4-5</i> <small>Hr</small>
+              <i>{vehicles.performance.chargingTime}</i>
             </span>
             <p>Charging Time</p>
           </div>
