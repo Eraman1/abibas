@@ -97,11 +97,8 @@ function Navbar() {
             {dropdown && (
               <ul className="dropdown-menu">
                 {vehicles.map((vehicle) => (
-                  <li
-                    key={vehicle._id}
-                    onClick={() => navigate(`/model/${vehicle._id}`)}
-                  >
-                    {vehicle.name}
+                  <li key={vehicle._id}>
+                    <Link to={`/model/${vehicle._id}`}>{vehicle.name}</Link>
                   </li>
                 ))}
               </ul>
